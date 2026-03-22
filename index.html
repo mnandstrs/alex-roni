@@ -192,91 +192,41 @@ border-radius: 20px;
 font-family: ‘DM Sans’, -apple-system, sans-serif;
 }
 
-/* Slider — Safari-safe layered approach */
+/* Custom drag slider — no browser input rendering */
 .slider-track {
 position: relative;
-height: 24px;
-display: -webkit-flex;
-display: flex;
--webkit-align-items: center;
-align-items: center;
-margin-top: 4px;
-}
-
-.slider-bg {
-position: absolute;
-left: 0; right: 0;
 height: 6px;
 background-color: #E8C4B0;
 border-radius: 6px;
-pointer-events: none;
-top: 50%;
-margin-top: -3px;
+margin-top: 28px;
+cursor: pointer;
 }
 
 .slider-fill {
 position: absolute;
-left: 0;
-height: 6px;
+left: 0; top: 0; bottom: 0;
 background-color: #C97B5A;
 border-radius: 6px;
+width: 100%;
 pointer-events: none;
-width: 100%;
-top: 50%;
-margin-top: -3px;
 }
 
-input[type=“range”] {
--webkit-appearance: none;
-appearance: none;
+.slider-thumb {
 position: absolute;
-left: 0;
-top: 0;
-width: 100%;
-height: 100%;
-background: transparent;
-cursor: pointer;
-outline: none;
-margin: 0;
-padding: 0;
-z-index: 2;
-}
-
-input[type=“range”]::-webkit-slider-container {
-height: 24px;
-}
-
-input[type=“range”]::-webkit-slider-runnable-track {
-background: transparent;
-height: 24px;
-}
-
-input[type=“range”]::-webkit-slider-thumb {
--webkit-appearance: none;
-appearance: none;
-width: 24px;
-height: 24px;
-border-radius: 50%;
+top: 50%;
+width: 26px;
+height: 26px;
 background-color: #C97B5A;
 border: 3px solid #ffffff;
-box-shadow: 0 2px 8px rgba(201,123,90,0.55);
-cursor: pointer;
-margin-top: 0px;
-}
-
-input[type=“range”]::-moz-range-track {
-background: transparent;
-height: 6px;
-}
-
-input[type=“range”]::-moz-range-thumb {
-width: 24px;
-height: 24px;
 border-radius: 50%;
-background-color: #C97B5A;
-border: 3px solid #ffffff;
 box-shadow: 0 2px 8px rgba(201,123,90,0.55);
-cursor: pointer;
+-webkit-transform: translate(-50%, -50%);
+transform: translate(-50%, -50%);
+cursor: grab;
+left: 100%;
+-webkit-user-select: none;
+user-select: none;
+touch-action: none;
 }
 
 /* ── CHIPS ── */
@@ -731,10 +681,9 @@ font-family: ‘DM Sans’, -apple-system, sans-serif;
       <label>💸 Budget per Person</label>
       <div class="range-wrap">
         <span class="range-val" id="budget-val">₱5,000</span>
-        <div class="slider-track">
-          <div class="slider-bg"></div>
+        <div class="slider-track" id="slider-track">
           <div class="slider-fill" id="slider-fill"></div>
-          <input type="range" id="f-budget" min="0" max="5000" step="100" value="5000" oninput="updateBudget(this)">
+          <div class="slider-thumb" id="slider-thumb"></div>
         </div>
       </div>
     </div>
@@ -1474,26 +1423,79 @@ function toggleDiningExtras() {
   el.className = show ? 'restaurant-extras visible' : 'restaurant-extras';
 }
 
-// ── SLIDER ── Use JS to update the fill bar (Safari-safe)
-function updateBudget(input) {
-  var val = parseInt(input.value);
-  var pct = (val / 5000) * 100;
-  document.getElementById('slider-fill').style.width = pct + '%';
-  document.getElementById('budget-val').textContent = val === 0 ? 'Free only' : '\u20B1' + val.toLocaleString();
+// ── CUSTOM SLIDER ──
+var sliderValue = 5000;
+
+function initSlider() {
+  var track = document.getElementById('slider-track');
+  var fill = document.getElementById('slider-fill');
+  var thumb = document.getElementById('slider-thumb');
+
+  function setVal(pct) {
+    pct = Math.max(0, Math.min(1, pct));
+    sliderValue = Math.round(pct * 5000 / 100) * 100;
+    fill.style.width = (pct * 100) + '%';
+    thumb.style.left = (pct * 100) + '%';
+    document.getElementById('budget-val').textContent = sliderValue === 0 ? 'Free only' : '\u20B1' + sliderValue.toLocaleString();
+  }
+
+  function getPct(clientX) {
+    var rect = track.getBoundingClientRect();
+    return (clientX - rect.left) / rect.width;
+  }
+
+  // Init at 100%
+  setVal(1);
+
+  // Touch events
+  thumb.addEventListener('touchstart', function(e) {
+    e.preventDefault();
+    function onMove(e) { setVal(getPct(e.touches[0].clientX)); }
+    function onEnd() {
+      document.removeEventListener('touchmove', onMove);
+      document.removeEventListener('touchend', onEnd);
+    }
+    document.addEventListener('touchmove', onMove, { passive: false });
+    document.addEventListener('touchend', onEnd);
+  }, { passive: false });
+
+  track.addEventListener('touchstart', function(e) {
+    e.preventDefault();
+    setVal(getPct(e.touches[0].clientX));
+    function onMove(e) { setVal(getPct(e.touches[0].clientX)); }
+    function onEnd() {
+      document.removeEventListener('touchmove', onMove);
+      document.removeEventListener('touchend', onEnd);
+    }
+    document.addEventListener('touchmove', onMove, { passive: false });
+    document.addEventListener('touchend', onEnd);
+  }, { passive: false });
+
+  // Mouse events (for desktop)
+  thumb.addEventListener('mousedown', function(e) {
+    e.preventDefault();
+    function onMove(e) { setVal(getPct(e.clientX)); }
+    function onUp() {
+      document.removeEventListener('mousemove', onMove);
+      document.removeEventListener('mouseup', onUp);
+    }
+    document.addEventListener('mousemove', onMove);
+    document.addEventListener('mouseup', onUp);
+  });
+
+  track.addEventListener('click', function(e) {
+    setVal(getPct(e.clientX));
+  });
 }
 
-// Init slider fill
-(function() {
-  var input = document.getElementById('f-budget');
-  var val = parseInt(input.value);
-  var pct = (val / 5000) * 100;
-  document.getElementById('slider-fill').style.width = pct + '%';
-})();
+window.addEventListener('load', function() {
+  initSlider();
+  setTimeout(runSearch, 300);
+});
 
 // ── SEARCH ──
 function runSearch() {
-  var budget = parseInt(document.getElementById('f-budget').value);
-  if (isNaN(budget)) budget = 5000;
+  var budget = sliderValue;
   var location = document.getElementById('f-location').value;
   var time = document.getElementById('f-time').value;
   var vibe = document.getElementById('f-vibe').value;
@@ -1602,7 +1604,7 @@ function closeModalBg(e) {
   if (e.target === document.getElementById('modal-overlay')) closeModal();
 }
 
-window.addEventListener('load', function() { setTimeout(runSearch, 300); });
+
 </script>
 
 </body>
