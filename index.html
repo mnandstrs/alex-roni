@@ -4,460 +4,476 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Alex & Roni's Date Planner — NCR</title>
+<title>Alex &amp; Roni's Date Planner — NCR</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap');
-</style>
-<style>
-  :root {
-    --cream: #FDF6ED;
-    --blush: #E8C4B0;
-    --rose: #C97B5A;
-    --deep: #2C1A12;
-    --mid: #6B3F2A;
-    --soft: #F5E6D8;
-    --accent: #D4526A;
-    --gold: #C9973A;
-    --green: #5A7A4E;
-    --tag-bg: #EEE0D5;
-  }
-
-- { margin: 0; padding: 0; box-sizing: border-box; }
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
 body {
-font-family: ‘DM Sans’, -apple-system, BlinkMacSystemFont, ‘Segoe UI’, sans-serif;
-background: var(–cream);
-color: var(–deep);
+font-family: ‘DM Sans’, -apple-system, BlinkMacSystemFont, ‘Helvetica Neue’, sans-serif;
+background-color: #FDF6ED;
+color: #2C1A12;
 min-height: 100vh;
 }
 
-/* HEADER */
+/* ── HEADER ── */
 header {
-background-color: #2C1A12 !important;
-background: #2C1A12;
-padding: 28px 48px;
+background-color: #2C1A12;
+padding: 22px 24px;
+display: -webkit-flex;
 display: flex;
+-webkit-align-items: center;
 align-items: center;
+-webkit-justify-content: space-between;
 justify-content: space-between;
+position: -webkit-sticky;
 position: sticky;
 top: 0;
 z-index: 100;
 }
 
 .logo {
-font-family: ‘Playfair Display’, Georgia, ‘Times New Roman’, serif;
-font-size: 1.6rem;
-color: #E8C4B0 !important;
-letter-spacing: 0.5px;
+font-family: ‘Playfair Display’, Georgia, serif;
+font-size: 1.4rem;
+color: #E8C4B0;
+line-height: 1.2;
 }
 
-.logo span { color: #C97B5A !important; font-style: italic; }
+.logo b { color: #C97B5A; font-style: italic; font-weight: 400; }
 
 .tagline {
-font-size: 0.75rem;
-color: #9B7B6A !important;
-letter-spacing: 2px;
+font-size: 0.65rem;
+color: #7A5A4A;
+letter-spacing: 1.5px;
 text-transform: uppercase;
+text-align: right;
+line-height: 1.5;
 }
 
-/* HERO */
+/* ── HERO ── */
 .hero {
-background-color: #2C1A12 !important;
-background: #2C1A12;
-padding: 64px 48px 80px;
+background-color: #2C1A12;
+padding: 48px 24px 72px;
 text-align: center;
-position: relative;
-overflow: hidden;
-}
-
-.hero::before {
-content: ‘’;
-position: absolute;
-top: -80px; left: 50%;
-transform: translateX(-50%);
-width: 600px; height: 600px;
-border-radius: 50%;
-background: radial-gradient(circle, rgba(201,123,90,0.15) 0%, transparent 70%);
-pointer-events: none;
 }
 
 .hero h1 {
-font-family: ‘Playfair Display’, Georgia, ‘Times New Roman’, serif;
-font-size: clamp(2.4rem, 5vw, 3.8rem);
-color: #FDF6ED !important;
+font-family: ‘Playfair Display’, Georgia, serif;
+font-size: 2.6rem;
+color: #FDF6ED;
 line-height: 1.2;
-margin-bottom: 14px;
+margin-bottom: 12px;
 }
 
-.hero h1 em {
-font-style: italic;
-color: #E8C4B0 !important;
-}
+.hero h1 i { color: #E8C4B0; font-style: italic; }
 
 .hero p {
-color: #9B7B6A !important;
-font-size: 1rem;
-letter-spacing: 0.3px;
-max-width: 440px;
+color: #7A5A4A;
+font-size: 0.95rem;
+max-width: 380px;
 margin: 0 auto;
+line-height: 1.5;
 }
 
-/* FILTER PANEL */
+/* ── FILTER CARD ── */
 .filter-wrapper {
-max-width: 1100px;
-margin: -40px auto 0;
-padding: 0 24px;
+max-width: 900px;
+margin: -36px auto 0;
+padding: 0 16px;
 position: relative;
 z-index: 10;
 }
 
 .filter-card {
-background: white;
+background-color: #ffffff;
 border-radius: 20px;
-box-shadow: 0 20px 60px rgba(44,26,18,0.15);
+box-shadow: 0 12px 48px rgba(44,26,18,0.18);
 overflow: hidden;
 }
 
+/* ── TABS ── */
 .filter-tabs {
+display: -webkit-flex;
 display: flex;
-border-bottom: 1px solid var(–soft);
+border-bottom: 1px solid #F5E6D8;
+overflow-x: auto;
+-webkit-overflow-scrolling: touch;
+scrollbar-width: none;
 }
+.filter-tabs::-webkit-scrollbar { display: none; }
 
 .filter-tab {
+-webkit-flex: 1;
 flex: 1;
-padding: 16px 8px;
+min-width: 60px;
+padding: 14px 6px;
 text-align: center;
-font-size: 0.78rem;
+font-size: 0.72rem;
 font-weight: 600;
-letter-spacing: 0.3px;
+font-family: ‘DM Sans’, -apple-system, sans-serif;
 cursor: pointer;
 color: #9B7B6A;
-transition: all 0.2s;
 border-bottom: 3px solid transparent;
+-webkit-user-select: none;
 user-select: none;
-font-family: ‘DM Sans’, -apple-system, sans-serif;
+white-space: nowrap;
+background-color: #ffffff;
+-webkit-transition: all 0.2s;
+transition: all 0.2s;
 }
 
 .filter-tab.active {
 color: #C97B5A;
 border-bottom-color: #C97B5A;
-background: #FFF8F4;
+background-color: #FFF8F4;
 }
 
-.filter-tab:hover:not(.active) { background: #FDF6ED; color: #6B3F2A; }
-
-.filter-body { padding: 28px 32px 32px; }
+/* ── FILTER BODY ── */
+.filter-body { padding: 24px 20px 28px; }
 
 .filter-grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-gap: 20px;
+display: -webkit-flex;
+display: flex;
+-webkit-flex-wrap: wrap;
+flex-wrap: wrap;
+gap: 16px;
 margin-bottom: 20px;
 }
 
+.filter-group { -webkit-flex: 1 1 180px; flex: 1 1 180px; min-width: 0; }
+
 .filter-group label {
 display: block;
-font-size: 0.72rem;
+font-size: 0.68rem;
 text-transform: uppercase;
 letter-spacing: 1.2px;
-color: var(–mid);
-font-weight: 500;
+color: #6B3F2A;
+font-weight: 600;
+font-family: ‘DM Sans’, -apple-system, sans-serif;
 margin-bottom: 8px;
 }
 
-.filter-group select,
-.filter-group input[type=“range”] {
-width: 100%;
-}
-
 select {
+-webkit-appearance: none;
 appearance: none;
-background: var(–soft);
-border: 1.5px solid var(–blush);
-border-radius: 10px;
-padding: 11px 36px 11px 14px;
-font-family: ‘DM Sans’, sans-serif;
-font-size: 0.9rem;
-color: var(–deep);
+width: 100%;
+background-color: #F5E6D8;
+border: 1.5px solid #E8C4B0;
+border-radius: 12px;
+padding: 12px 36px 12px 14px;
+font-family: ‘DM Sans’, -apple-system, sans-serif;
+font-size: 0.88rem;
+color: #2C1A12;
 cursor: pointer;
-background-image: url(“data:image/svg+xml,%3Csvg xmlns=‘http://www.w3.org/2000/svg’ width=‘12’ height=‘8’ viewBox=‘0 0 12 8’%3E%3Cpath fill=’%23C97B5A’ d=‘M6 8L0 0h12z’/%3E%3C/svg%3E”);
+background-image: url(“data:image/svg+xml,%3Csvg xmlns=‘http://www.w3.org/2000/svg’ width=‘12’ height=‘7’ viewBox=‘0 0 12 7’%3E%3Cpath fill=’%23C97B5A’ d=‘M6 7L0 0h12z’/%3E%3C/svg%3E”);
 background-repeat: no-repeat;
-background-position: right 14px center;
+background-position: right 13px center;
+-webkit-transition: border-color 0.2s;
 transition: border-color 0.2s;
+outline: none;
 }
 
-select:focus { outline: none; border-color: #C97B5A; }
+select:focus { border-color: #C97B5A; }
 
+/* ── SLIDER ── */
 .range-wrap { position: relative; padding-top: 28px; }
+
 .range-val {
 position: absolute;
 right: 0; top: 0;
-font-size: 0.82rem;
+font-size: 0.8rem;
 font-weight: 600;
 color: #C97B5A;
-background: #FDE8DC;
-padding: 2px 10px;
+background-color: #FDE8DC;
+padding: 3px 10px;
 border-radius: 20px;
+font-family: ‘DM Sans’, -apple-system, sans-serif;
+}
+
+/* Safari: we use a JS-drawn canvas behind the thumb instead of CSS gradient */
+.slider-track {
+position: relative;
+height: 6px;
+background-color: #E8C4B0;
+border-radius: 6px;
+margin-bottom: 4px;
+}
+
+.slider-fill {
+position: absolute;
+left: 0; top: 0; bottom: 0;
+background-color: #C97B5A;
+border-radius: 6px;
+pointer-events: none;
+width: 100%;
 }
 
 input[type=“range”] {
 -webkit-appearance: none;
 appearance: none;
+position: absolute;
+top: -7px;
+left: 0;
 width: 100%;
-height: 6px;
-border-radius: 6px;
-background: linear-gradient(to right, #C97B5A 0%, #C97B5A var(–pct, 100%), #E8C4B0 var(–pct, 100%), #E8C4B0 100%);
+height: 20px;
+background: transparent;
 cursor: pointer;
 outline: none;
-border: none;
+margin: 0;
+padding: 0;
 }
 
 input[type=“range”]::-webkit-slider-thumb {
 -webkit-appearance: none;
 appearance: none;
-width: 22px; height: 22px;
+width: 22px;
+height: 22px;
 border-radius: 50%;
-background: #C97B5A;
-border: 3px solid white;
+background-color: #C97B5A;
+border: 3px solid #ffffff;
 box-shadow: 0 2px 8px rgba(201,123,90,0.5);
 cursor: pointer;
+margin-top: -8px;
 }
 
 input[type=“range”]::-moz-range-thumb {
-width: 22px; height: 22px;
+width: 22px;
+height: 22px;
 border-radius: 50%;
-background: #C97B5A;
-border: 3px solid white;
+background-color: #C97B5A;
+border: 3px solid #ffffff;
 box-shadow: 0 2px 8px rgba(201,123,90,0.5);
 cursor: pointer;
-border: none;
 }
 
-/* Chip toggles */
+input[type=“range”]::-webkit-slider-runnable-track {
+background: transparent;
+height: 6px;
+}
+
+/* ── CHIPS ── */
 .chip-row {
+display: -webkit-flex;
 display: flex;
+-webkit-flex-wrap: wrap;
 flex-wrap: wrap;
 gap: 8px;
 margin-top: 6px;
 }
 
 .chip {
+display: inline-block;
 padding: 8px 16px;
 border-radius: 50px;
 border: 1.5px solid #E8C4B0;
-background: #FDF6ED;
-font-size: 0.8rem;
+background-color: #FDF6ED;
+font-size: 0.78rem;
 font-family: ‘DM Sans’, -apple-system, sans-serif;
-cursor: pointer;
-transition: all 0.18s;
-color: #6B3F2A;
-user-select: none;
 font-weight: 500;
-box-shadow: 0 1px 3px rgba(44,26,18,0.06);
+cursor: pointer;
+color: #6B3F2A;
+-webkit-user-select: none;
+user-select: none;
+-webkit-transition: all 0.15s;
+transition: all 0.15s;
+box-shadow: 0 1px 3px rgba(44,26,18,0.07);
+line-height: 1;
 }
 
 .chip.active {
-background: #C97B5A;
+background-color: #C97B5A;
 border-color: #C97B5A;
-color: white;
-box-shadow: 0 3px 10px rgba(201,123,90,0.35);
-transform: translateY(-1px);
+color: #ffffff;
+box-shadow: 0 3px 10px rgba(201,123,90,0.4);
 }
 
-.chip:hover:not(.active) {
-background: #F5E6D8;
-border-color: #C97B5A;
-transform: translateY(-1px);
-}
-
-/* Restaurant extras */
+/* ── RESTAURANT EXTRAS ── */
 .restaurant-extras {
 display: none;
-border-top: 1px dashed var(–blush);
+border-top: 1px dashed #E8C4B0;
 padding-top: 20px;
 margin-top: 4px;
 }
 
 .restaurant-extras.visible { display: block; }
 
+.dining-label {
+font-size: 0.68rem;
+text-transform: uppercase;
+letter-spacing: 1.2px;
+color: #C97B5A;
+font-weight: 600;
+font-family: ‘DM Sans’, -apple-system, sans-serif;
+margin-bottom: 14px;
+}
+
+/* ── SEARCH BUTTON ── */
 .search-btn {
+display: -webkit-flex;
+display: flex;
+-webkit-align-items: center;
+align-items: center;
+-webkit-justify-content: center;
+justify-content: center;
+gap: 8px;
 width: 100%;
 margin-top: 24px;
 padding: 17px;
-background: linear-gradient(135deg, #C97B5A 0%, #A85A3A 100%);
-color: white;
+background-color: #C97B5A;
+background-image: linear-gradient(135deg, #D4895A 0%, #B5643A 100%);
+color: #ffffff;
 border: none;
 border-radius: 14px;
 font-family: ‘DM Sans’, -apple-system, sans-serif;
 font-size: 1rem;
 font-weight: 600;
-letter-spacing: 0.5px;
+letter-spacing: 0.3px;
 cursor: pointer;
-transition: all 0.2s;
-display: flex;
-align-items: center;
-justify-content: center;
-gap: 8px;
-box-shadow: 0 4px 15px rgba(201,123,90,0.4);
+box-shadow: 0 4px 16px rgba(201,123,90,0.45);
+-webkit-transition: opacity 0.2s, transform 0.1s;
+transition: opacity 0.2s, transform 0.1s;
+-webkit-appearance: none;
+appearance: none;
+outline: none;
 }
 
-.search-btn:hover {
-background: linear-gradient(135deg, #B56A4A 0%, #8B4A2A 100%);
-box-shadow: 0 6px 20px rgba(201,123,90,0.5);
-transform: translateY(-1px);
-}
-.search-btn:active { transform: scale(0.98); }
+.search-btn:active { opacity: 0.85; -webkit-transform: scale(0.98); transform: scale(0.98); }
 
-/* RESULTS */
+/* ── RESULTS ── */
 .results-wrapper {
-max-width: 1100px;
-margin: 48px auto 80px;
-padding: 0 24px;
+max-width: 900px;
+margin: 40px auto 80px;
+padding: 0 16px;
 }
 
 .results-header {
+display: -webkit-flex;
 display: flex;
+-webkit-align-items: baseline;
 align-items: baseline;
+-webkit-justify-content: space-between;
 justify-content: space-between;
-margin-bottom: 28px;
+margin-bottom: 24px;
 }
 
 .results-header h2 {
-font-family: ‘Playfair Display’, Georgia, ‘Times New Roman’, serif;
-font-size: 1.6rem;
-color: var(–deep);
+font-family: ‘Playfair Display’, Georgia, serif;
+font-size: 1.5rem;
+color: #2C1A12;
 }
 
-.results-count {
-font-size: 0.82rem;
-color: #9B7B6A;
-letter-spacing: 0.3px;
-}
+.results-count { font-size: 0.8rem; color: #9B7B6A; }
 
 .cards-grid {
-display: grid;
-grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
-gap: 24px;
+display: -webkit-flex;
+display: flex;
+-webkit-flex-wrap: wrap;
+flex-wrap: wrap;
+gap: 20px;
 }
 
+/* ── CARDS ── */
 .card {
-background: white;
+background-color: #ffffff;
 border-radius: 18px;
 overflow: hidden;
-box-shadow: 0 4px 20px rgba(44,26,18,0.08);
-transition: transform 0.25s, box-shadow 0.25s;
+box-shadow: 0 4px 20px rgba(44,26,18,0.09);
 cursor: pointer;
-animation: fadeUp 0.4s ease both;
+-webkit-flex: 1 1 280px;
+flex: 1 1 280px;
+min-width: 0;
+-webkit-transition: transform 0.22s, box-shadow 0.22s;
+transition: transform 0.22s, box-shadow 0.22s;
+-webkit-animation: fadeUp 0.35s ease both;
+animation: fadeUp 0.35s ease both;
 }
 
-.card:hover {
-transform: translateY(-5px);
-box-shadow: 0 14px 40px rgba(44,26,18,0.15);
+@-webkit-keyframes fadeUp {
+from { opacity: 0; -webkit-transform: translateY(18px); transform: translateY(18px); }
+to { opacity: 1; -webkit-transform: translateY(0); transform: translateY(0); }
 }
-
 @keyframes fadeUp {
-from { opacity: 0; transform: translateY(20px); }
+from { opacity: 0; transform: translateY(18px); }
 to { opacity: 1; transform: translateY(0); }
 }
 
 .card-img {
-height: 170px;
+height: 150px;
+display: -webkit-flex;
 display: flex;
+-webkit-align-items: center;
 align-items: center;
+-webkit-justify-content: center;
 justify-content: center;
-font-size: 4rem;
+font-size: 3.5rem;
 position: relative;
 }
 
 .card-badge {
 position: absolute;
-top: 12px; right: 12px;
-background: white;
+top: 10px; right: 10px;
+background-color: #ffffff;
 border-radius: 50px;
-padding: 4px 12px;
-font-size: 0.72rem;
-font-weight: 500;
-color: var(–deep);
+padding: 4px 11px;
+font-size: 0.68rem;
+font-weight: 600;
+color: #2C1A12;
+font-family: ‘DM Sans’, -apple-system, sans-serif;
 box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
-.card-body { padding: 20px 22px 24px; }
+.card-body { padding: 18px 20px 22px; }
 
 .card-name {
-font-family: ‘Playfair Display’, Georgia, ‘Times New Roman’, serif;
-font-size: 1.2rem;
+font-family: ‘Playfair Display’, Georgia, serif;
+font-size: 1.15rem;
 margin-bottom: 4px;
-color: var(–deep);
+color: #2C1A12;
 }
 
 .card-location {
-font-size: 0.8rem;
+font-size: 0.78rem;
 color: #9B7B6A;
 margin-bottom: 12px;
-display: flex;
-align-items: center;
-gap: 4px;
 }
 
 .card-tags {
+display: -webkit-flex;
 display: flex;
+-webkit-flex-wrap: wrap;
 flex-wrap: wrap;
 gap: 6px;
 margin-bottom: 14px;
 }
 
 .tag {
-background: var(–tag-bg);
+background-color: #EEE0D5;
 padding: 4px 10px;
 border-radius: 50px;
-font-size: 0.72rem;
-color: var(–mid);
+font-size: 0.7rem;
+color: #6B3F2A;
+font-family: ‘DM Sans’, -apple-system, sans-serif;
 }
 
-.tag.highlight { background: #FDE8E0; color: var(–accent); }
+.tag.highlight { background-color: #FDE8E0; color: #C97B5A; font-weight: 600; }
 
 .card-meta {
+display: -webkit-flex;
 display: flex;
+-webkit-justify-content: space-between;
 justify-content: space-between;
-align-items: center;
-padding-top: 14px;
-border-top: 1px solid var(–soft);
+padding-top: 12px;
+border-top: 1px solid #F5E6D8;
+font-size: 0.78rem;
+color: #6B3F2A;
 }
 
-.meta-item {
-font-size: 0.8rem;
-color: var(–mid);
-display: flex;
-align-items: center;
-gap: 4px;
-}
-
-.meta-item strong { color: var(–deep); font-weight: 500; }
-
-/* EMPTY STATE */
-.empty-state {
-text-align: center;
-padding: 64px 24px;
-display: none;
-}
-
-.empty-state .icon { font-size: 3.5rem; margin-bottom: 16px; }
-
-.empty-state h3 {
-font-family: ‘Playfair Display’, Georgia, ‘Times New Roman’, serif;
-font-size: 1.4rem;
-color: var(–mid);
-margin-bottom: 8px;
-}
-
-.empty-state p { color: #9B7B6A; font-size: 0.9rem; }
-
-/* LOADING */
+/* ── LOADING ── */
 .loading {
 display: none;
+-webkit-justify-content: center;
 justify-content: center;
 padding: 48px;
 gap: 8px;
@@ -466,148 +482,168 @@ gap: 8px;
 .dot {
 width: 10px; height: 10px;
 border-radius: 50%;
-background: var(–blush);
+background-color: #E8C4B0;
+-webkit-animation: bounce 1s infinite;
 animation: bounce 1s infinite;
 }
+.dot:nth-child(2) { -webkit-animation-delay: 0.15s; animation-delay: 0.15s; }
+.dot:nth-child(3) { -webkit-animation-delay: 0.3s; animation-delay: 0.3s; }
 
-.dot:nth-child(2) { animation-delay: 0.15s; }
-.dot:nth-child(3) { animation-delay: 0.3s; }
-
+@-webkit-keyframes bounce {
+0%, 80%, 100% { -webkit-transform: scale(1); opacity: 0.5; }
+40% { -webkit-transform: scale(1.3); opacity: 1; }
+}
 @keyframes bounce {
 0%, 80%, 100% { transform: scale(1); opacity: 0.5; }
 40% { transform: scale(1.3); opacity: 1; }
 }
 
-/* MODAL */
+/* ── EMPTY STATE ── */
+.empty-state { text-align: center; padding: 64px 24px; display: none; }
+.empty-state .icon { font-size: 3rem; margin-bottom: 14px; }
+.empty-state h3 { font-family: ‘Playfair Display’, Georgia, serif; font-size: 1.3rem; color: #6B3F2A; margin-bottom: 6px; }
+.empty-state p { color: #9B7B6A; font-size: 0.88rem; }
+
+/* ── MODAL ── */
 .modal-overlay {
 position: fixed;
-inset: 0;
-background: rgba(44,26,18,0.6);
+top: 0; left: 0; right: 0; bottom: 0;
+background-color: rgba(44,26,18,0.65);
 z-index: 200;
+display: -webkit-flex;
 display: flex;
+-webkit-align-items: center;
 align-items: center;
+-webkit-justify-content: center;
 justify-content: center;
-padding: 24px;
+padding: 20px;
 opacity: 0;
 pointer-events: none;
+-webkit-transition: opacity 0.25s;
 transition: opacity 0.25s;
+-webkit-backdrop-filter: blur(4px);
 backdrop-filter: blur(4px);
 }
 
 .modal-overlay.open { opacity: 1; pointer-events: all; }
 
 .modal {
-background: white;
+background-color: #ffffff;
 border-radius: 22px;
-max-width: 560px;
+max-width: 520px;
 width: 100%;
 overflow: hidden;
+-webkit-transform: scale(0.95);
 transform: scale(0.95);
+-webkit-transition: transform 0.25s;
 transition: transform 0.25s;
-max-height: 90vh;
+max-height: 88vh;
 overflow-y: auto;
+-webkit-overflow-scrolling: touch;
 }
 
-.modal-overlay.open .modal { transform: scale(1); }
+.modal-overlay.open .modal { -webkit-transform: scale(1); transform: scale(1); }
 
 .modal-header {
-height: 200px;
+height: 180px;
+display: -webkit-flex;
 display: flex;
+-webkit-align-items: center;
 align-items: center;
+-webkit-justify-content: center;
 justify-content: center;
-font-size: 5rem;
+font-size: 4.5rem;
 position: relative;
 }
 
 .modal-close {
 position: absolute;
-top: 16px; right: 16px;
+top: 14px; right: 14px;
 width: 32px; height: 32px;
 border-radius: 50%;
-background: rgba(255,255,255,0.9);
+background-color: rgba(255,255,255,0.92);
 border: none;
-font-size: 1.1rem;
+font-size: 1rem;
 cursor: pointer;
+display: -webkit-flex;
 display: flex;
+-webkit-align-items: center;
 align-items: center;
+-webkit-justify-content: center;
 justify-content: center;
-transition: background 0.15s;
+color: #2C1A12;
+font-family: -apple-system, sans-serif;
 }
 
-.modal-close:hover { background: white; }
-
-.modal-body { padding: 28px 32px 36px; }
+.modal-body { padding: 24px 26px 32px; }
 
 .modal-title {
-font-family: ‘Playfair Display’, Georgia, ‘Times New Roman’, serif;
-font-size: 1.8rem;
-color: var(–deep);
-margin-bottom: 6px;
-}
-
-.modal-location {
-color: #9B7B6A;
-font-size: 0.85rem;
-margin-bottom: 16px;
-}
-
-.modal-desc {
-color: var(–mid);
-font-size: 0.92rem;
-line-height: 1.6;
-margin-bottom: 20px;
-}
-
-.modal-details {
-display: grid;
-grid-template-columns: 1fr 1fr;
-gap: 12px;
-margin-bottom: 24px;
-}
-
-.detail-box {
-background: var(–soft);
-border-radius: 12px;
-padding: 14px 16px;
-}
-
-.detail-box .detail-label {
-font-size: 0.7rem;
-text-transform: uppercase;
-letter-spacing: 1px;
-color: var(–rose);
-font-weight: 500;
+font-family: ‘Playfair Display’, Georgia, serif;
+font-size: 1.6rem;
+color: #2C1A12;
 margin-bottom: 4px;
 }
 
-.detail-box .detail-val {
+.modal-location { color: #9B7B6A; font-size: 0.82rem; margin-bottom: 14px; }
+
+.modal-desc {
+color: #6B3F2A;
 font-size: 0.9rem;
-color: var(–deep);
-font-weight: 500;
+line-height: 1.65;
+margin-bottom: 18px;
+}
+
+.modal-details {
+display: -webkit-flex;
+display: flex;
+-webkit-flex-wrap: wrap;
+flex-wrap: wrap;
+gap: 10px;
+margin-bottom: 20px;
+}
+
+.detail-box {
+background-color: #F5E6D8;
+border-radius: 12px;
+padding: 12px 14px;
+-webkit-flex: 1 1 120px;
+flex: 1 1 120px;
+}
+
+.detail-label {
+font-size: 0.65rem;
+text-transform: uppercase;
+letter-spacing: 1px;
+color: #C97B5A;
+font-weight: 600;
+font-family: ‘DM Sans’, -apple-system, sans-serif;
+margin-bottom: 4px;
+}
+
+.detail-val {
+font-size: 0.88rem;
+color: #2C1A12;
+font-weight: 600;
+font-family: ‘DM Sans’, -apple-system, sans-serif;
 }
 
 .modal-tips {
-background: #FFF8F4;
-border-left: 3px solid var(–rose);
-padding: 14px 16px;
+background-color: #FFF8F4;
+border-left: 3px solid #C97B5A;
+padding: 13px 15px;
 border-radius: 0 12px 12px 0;
-font-size: 0.85rem;
-color: var(–mid);
-line-height: 1.5;
+font-size: 0.84rem;
+color: #6B3F2A;
+line-height: 1.55;
+font-family: ‘DM Sans’, -apple-system, sans-serif;
 }
 
-.modal-tips strong { color: var(–rose); }
+.modal-tips b { color: #C97B5A; }
 
-/* Responsive */
-@media (max-width: 640px) {
-header { padding: 18px 20px; }
-.hero { padding: 48px 20px 64px; }
-.filter-wrapper { padding: 0 16px; }
-.filter-body { padding: 20px 20px 24px; }
-.filter-grid { grid-template-columns: 1fr; gap: 16px; }
-.results-wrapper { padding: 0 16px; }
-.modal-body { padding: 20px 22px 28px; }
-.modal-details { grid-template-columns: 1fr; }
+@media (max-width: 480px) {
+.hero h1 { font-size: 2rem; }
+.filter-body { padding: 18px 16px 22px; }
+.card { -webkit-flex: 1 1 100%; flex: 1 1 100%; }
 }
 </style>
 
@@ -615,31 +651,27 @@ header { padding: 18px 20px; }
 <body>
 
 <header>
-  <div class="logo">Alex <span>&</span> Roni's Date Planner</div>
-  <div class="tagline">Manila · BGC · Makati · QC & Beyond</div>
+  <div class="logo">Alex <b>&</b> Roni's<br>Date Planner</div>
+  <div class="tagline">Manila · BGC · Makati<br>· QC &amp; Beyond</div>
 </header>
 
 <div class="hero">
-  <h1>Plan Your Perfect<br><em>Date Night</em></h1>
-  <p>Filter by vibe, budget & location to discover your next unforgettable spot.</p>
+  <h1>Plan Your Perfect<br><i>Date Night</i></h1>
+  <p>Filter by vibe, budget &amp; location to discover your next unforgettable spot.</p>
 </div>
-
-<!-- FILTER PANEL -->
 
 <div class="filter-wrapper">
   <div class="filter-card">
-    <!-- Tabs -->
     <div class="filter-tabs">
-      <div class="filter-tab active" data-tab="all" onclick="setTab(this,'all')">✨ All</div>
-      <div class="filter-tab" data-tab="restaurant" onclick="setTab(this,'restaurant')">🍽 Dining</div>
-      <div class="filter-tab" data-tab="activity" onclick="setTab(this,'activity')">🎭 Activities</div>
-      <div class="filter-tab" data-tab="outdoor" onclick="setTab(this,'outdoor')">🌿 Outdoors</div>
-      <div class="filter-tab" data-tab="leisure" onclick="setTab(this,'leisure')">🧘 Leisure</div>
+      <div class="filter-tab active" onclick="setTab(this,'all')">✨ All</div>
+      <div class="filter-tab" onclick="setTab(this,'restaurant')">🍽 Dining</div>
+      <div class="filter-tab" onclick="setTab(this,'activity')">🎭 Activities</div>
+      <div class="filter-tab" onclick="setTab(this,'outdoor')">🌿 Outdoors</div>
+      <div class="filter-tab" onclick="setTab(this,'leisure')">🧘 Leisure</div>
     </div>
 
 ```
 <div class="filter-body">
-  <!-- Main filters -->
   <div class="filter-grid">
 
     <div class="filter-group">
@@ -673,8 +705,10 @@ header { padding: 18px 20px; }
       <label>💸 Budget per Person</label>
       <div class="range-wrap">
         <span class="range-val" id="budget-val">₱5,000</span>
-        <input type="range" id="f-budget" min="0" max="5000" step="100" value="5000"
-          oninput="updateBudget(this)">
+        <div class="slider-track">
+          <div class="slider-fill" id="slider-fill"></div>
+          <input type="range" id="f-budget" min="0" max="5000" step="100" value="5000" oninput="updateBudget(this)">
+        </div>
       </div>
     </div>
 
@@ -682,18 +716,17 @@ header { padding: 18px 20px; }
       <label>💑 Vibe</label>
       <select id="f-vibe">
         <option value="">Any Vibe</option>
-        <option value="romantic">Romantic & Intimate</option>
-        <option value="fun">Fun & Playful</option>
-        <option value="chill">Chill & Low-key</option>
+        <option value="romantic">Romantic &amp; Intimate</option>
+        <option value="fun">Fun &amp; Playful</option>
+        <option value="chill">Chill &amp; Low-key</option>
         <option value="adventurous">Adventurous</option>
-        <option value="cultural">Cultural & Artsy</option>
+        <option value="cultural">Cultural &amp; Artsy</option>
         <option value="foodie">Foodie Exploration</option>
       </select>
     </div>
 
   </div>
 
-  <!-- Activity Type chips -->
   <div class="filter-group" style="margin-bottom:20px">
     <label>🎯 Activity Type</label>
     <div class="chip-row" id="activity-chips">
@@ -706,15 +739,14 @@ header { padding: 18px 20px; }
       <div class="chip" data-val="shopping">Shopping</div>
       <div class="chip" data-val="cinema">Cinema</div>
       <div class="chip" data-val="spa">Spa / Wellness</div>
-      <div class="chip" data-val="sports">Sports & Recreation</div>
+      <div class="chip" data-val="sports">Sports &amp; Recreation</div>
       <div class="chip" data-val="cooking">Cooking Class</div>
       <div class="chip" data-val="dessert">Dessert Spot</div>
     </div>
   </div>
 
-  <!-- Restaurant extras (shown when Dining tab or Restaurant chip active) -->
   <div class="restaurant-extras" id="restaurant-extras">
-    <div style="font-size:0.72rem;text-transform:uppercase;letter-spacing:1.2px;color:var(--mid);font-weight:500;margin-bottom:14px;">🍽 Dining Filters</div>
+    <div class="dining-label">🍽 Dining Filters</div>
     <div class="filter-grid">
       <div class="filter-group">
         <label>🌍 Cuisine Type</label>
@@ -736,7 +768,6 @@ header { padding: 18px 20px; }
           <option value="vegan">Vegan / Vegetarian</option>
         </select>
       </div>
-
       <div class="filter-group">
         <label>🌅 Meal Period</label>
         <select id="f-meal">
@@ -747,7 +778,6 @@ header { padding: 18px 20px; }
           <option value="latenight">Late Night</option>
         </select>
       </div>
-
       <div class="filter-group">
         <label>🏛 Setting</label>
         <select id="f-setting">
@@ -760,7 +790,6 @@ header { padding: 18px 20px; }
           <option value="scenic">Scenic View</option>
         </select>
       </div>
-
       <div class="filter-group">
         <label>⭐ Dietary Needs</label>
         <select id="f-diet">
@@ -768,50 +797,39 @@ header { padding: 18px 20px; }
           <option value="vegan">Vegan Options</option>
           <option value="glutenfree">Gluten-Free Friendly</option>
           <option value="halal">Halal Certified</option>
-          <option value="kosher">Pescatarian-Friendly</option>
+          <option value="pescatarian">Pescatarian-Friendly</option>
         </select>
       </div>
     </div>
   </div>
 
-  <button class="search-btn" onclick="runSearch()">
-    <span>🔍</span> Find Date Spots
-  </button>
+  <button class="search-btn" onclick="runSearch()">🔍 Find Date Spots</button>
 </div>
 ```
 
   </div>
 </div>
 
-<!-- RESULTS -->
-
 <div class="results-wrapper">
   <div class="results-header" id="results-header" style="display:none">
     <h2>Date Ideas for You</h2>
     <span class="results-count" id="results-count"></span>
   </div>
-
-  <div class="loading" id="loading">
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
+  <div class="loading" id="loading" style="display:none">
+    <div class="dot"></div><div class="dot"></div><div class="dot"></div>
   </div>
-
   <div class="cards-grid" id="cards-grid"></div>
-
   <div class="empty-state" id="empty-state">
     <div class="icon">💔</div>
     <h3>No spots found</h3>
-    <p>Try loosening up your filters — your perfect date is out there!</p>
+    <p>Try loosening your filters — your perfect date is out there!</p>
   </div>
 </div>
 
-<!-- MODAL -->
-
-<div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
-  <div class="modal" id="modal">
+<div class="modal-overlay" id="modal-overlay" onclick="closeModalBg(event)">
+  <div class="modal">
     <div class="modal-header" id="modal-header">
-      <button class="modal-close" onclick="closeModalBtn()">✕</button>
+      <button class="modal-close" onclick="closeModal()">✕</button>
     </div>
     <div class="modal-body">
       <div class="modal-title" id="modal-title"></div>
@@ -824,13 +842,11 @@ header { padding: 18px 20px; }
 </div>
 
 <script>
-// ─── DATA ─────────────────────────────────────────────────────────────────────
 const SPOTS = [
-  // ── RESTAURANTS ──────────────────────────────────────────────────────────────
   { id:1, name:"Blackbird Restaurant", emoji:"🍷", type:"restaurant", activityType:"restaurant",
     location:"makati", area:"Ayala Triangle Gardens, Makati", budget:1500, time:"evening",
     vibe:"romantic", cuisine:"italian", meal:"dinner", setting:"scenic",
-    tags:["Fine Dining","Romantic","Garden View"], highlight:"Iconic garden setting under acacia trees",
+    tags:["Fine Dining","Romantic","Garden View"],
     desc:"Set amidst century-old acacia trees in Ayala Triangle, Blackbird offers a gorgeous garden atmosphere with contemporary cuisine — utterly magical at night.",
     tip:"Request a table near the garden edge. Perfect for anniversaries or special occasions.",
     bg:"#2C3E50" },
@@ -838,7 +854,7 @@ const SPOTS = [
   { id:2, name:"Nobu Manila", emoji:"🎌", type:"restaurant", activityType:"restaurant",
     location:"paranaque", area:"City of Dreams, Parañaque", budget:3000, time:"evening",
     vibe:"romantic", cuisine:"japanese", meal:"dinner", setting:"finedining",
-    tags:["Japanese","Fine Dining","Celebrity Chef"], highlight:"World-famous Nobu brand",
+    tags:["Japanese","Fine Dining","Celebrity Chef"],
     desc:"The legendary Nobu restaurant brings Chef Nobu Matsuhisa's globally acclaimed Japanese-Peruvian fusion to Manila with a stunning interior.",
     tip:"Try the Black Cod Miso — an absolute must. Book at least a week ahead on weekends.",
     bg:"#1A1A2E" },
@@ -846,7 +862,7 @@ const SPOTS = [
   { id:3, name:"Gallery Vask", emoji:"🍽", type:"restaurant", activityType:"restaurant",
     location:"bgc", area:"5/F Clipp Center, BGC", budget:4500, time:"evening",
     vibe:"cultural", cuisine:"spanish", meal:"dinner", setting:"finedining",
-    tags:["Tasting Menu","Spanish","Fine Dining"], highlight:"Multi-awarded Chef Chele González",
+    tags:["Tasting Menu","Spanish","Fine Dining"],
     desc:"An extraordinary tasting menu experience by Chef Chele, blending Filipino ingredients with avant-garde Spanish techniques. One of Asia's finest restaurants.",
     tip:"Book the chef's table for the most immersive experience. Opt for wine pairing.",
     bg:"#2D4A3E" },
@@ -854,7 +870,7 @@ const SPOTS = [
   { id:4, name:"Manam Comfort Filipino", emoji:"🍛", type:"restaurant", activityType:"restaurant",
     location:"bgc", area:"BGC / Greenbelt / Multiple", budget:600, time:"half",
     vibe:"foodie", cuisine:"filipino", meal:"lunch",
-    tags:["Filipino","Comfort Food","Affordable"], highlight:"Best sizzling bulalo in Manila",
+    tags:["Filipino","Comfort Food","Affordable"],
     desc:"Beloved by locals for elevated Filipino comfort food — sizzling bulalo, kare-kare, and amazing halo-halo. A foodie date that won't break the bank.",
     tip:"Go hungry. Order the crispy dinuguan and sinigang sa miso. Expect queues on weekends.",
     bg:"#8B4513" },
@@ -862,7 +878,7 @@ const SPOTS = [
   { id:5, name:"The Test Kitchen", emoji:"🧪", type:"restaurant", activityType:"restaurant",
     location:"pasig", area:"Kapitolyo, Pasig", budget:1200, time:"evening",
     vibe:"foodie", cuisine:"american", meal:"dinner", setting:"hidden",
-    tags:["Hidden Gem","Creative Menu","Intimate"], highlight:"Chef-curated menu changes weekly",
+    tags:["Hidden Gem","Creative Menu","Intimate"],
     desc:"A cozy hole-in-the-wall where the chef experiments with seasonal menus. The intimate setting — only 10 tables — makes every dinner feel exclusive.",
     tip:"Check their Instagram for weekly menu updates. No reservations, so arrive early.",
     bg:"#3D2B1F" },
@@ -870,7 +886,7 @@ const SPOTS = [
   { id:6, name:"Toyo Eatery", emoji:"🫙", type:"restaurant", activityType:"restaurant",
     location:"bgc", area:"Karrivin Plaza, BGC", budget:3500, time:"evening",
     vibe:"cultural", cuisine:"filipino", meal:"dinner", setting:"finedining",
-    tags:["Filipino Fine Dining","Tasting Menu","Award-Winning"], highlight:"Asia's 50 Best Restaurants",
+    tags:["Filipino Fine Dining","Tasting Menu","Award-Winning"],
     desc:"Chef Jordy Navarra's Toyo redefines Filipino cuisine through a progressive lens — fermented ingredients, local produce, and deeply personal storytelling on every plate.",
     tip:"Book months in advance. This is a bucket-list dinner. The Sunday bread service is legendary.",
     bg:"#1C1009" },
@@ -878,7 +894,7 @@ const SPOTS = [
   { id:7, name:"Metronome Restaurant", emoji:"🎵", type:"restaurant", activityType:"restaurant",
     location:"bgc", area:"High Street South, BGC", budget:2500, time:"evening",
     vibe:"romantic", cuisine:"french", meal:"dinner", setting:"finedining",
-    tags:["French","Romantic","Tasting Menu"], highlight:"Music-themed fine dining",
+    tags:["French","Romantic","Tasting Menu"],
     desc:"A French-inspired restaurant where the menu is curated like a symphony. Elegant, intimate, and utterly romantic — one of BGC's best-kept secrets.",
     tip:"Sit by the window for the best ambiance. The cheese board finale is not to be skipped.",
     bg:"#2A1F3D" },
@@ -886,7 +902,7 @@ const SPOTS = [
   { id:8, name:"Antonio's Tagaytay", emoji:"🌹", type:"restaurant", activityType:"restaurant",
     location:"alabang", area:"Tagaytay (day trip from NCR)", budget:2500, time:"full",
     vibe:"romantic", cuisine:"italian", meal:"dinner", setting:"scenic",
-    tags:["Romantic","Fine Dining","Scenic Drive"], highlight:"Arguably Manila's most romantic restaurant",
+    tags:["Romantic","Fine Dining","Scenic Drive"],
     desc:"Perched with sweeping views of Tagaytay, Antonio's stunning garden estate delivers impeccable European cuisine in an unforgettable setting.",
     tip:"Reserve the garden gazebo for proposals or anniversaries. The drive there is part of the romance.",
     bg:"#1B3A1B" },
@@ -894,7 +910,7 @@ const SPOTS = [
   { id:9, name:"Cibo di M", emoji:"🍝", type:"restaurant", activityType:"restaurant",
     location:"makati", area:"Greenbelt 5, Makati", budget:1200, time:"evening",
     vibe:"romantic", cuisine:"italian", meal:"dinner", setting:"casual",
-    tags:["Italian","Pasta","Romantic"], highlight:"Consistently excellent pasta",
+    tags:["Italian","Pasta","Romantic"],
     desc:"Chef Margarita Forés' flagship Italian restaurant is a Manila institution. Beautiful interiors, house-made pasta, and an atmosphere that never disappoints.",
     tip:"The truffle pasta is iconic. Great for a stylish but not overly formal dinner date.",
     bg:"#8B2020" },
@@ -902,7 +918,7 @@ const SPOTS = [
   { id:10, name:"Ooma Restaurant", emoji:"🍱", type:"restaurant", activityType:"restaurant",
     location:"bgc", area:"BGC / SM Aura / Multiple", budget:900, time:"half",
     vibe:"fun", cuisine:"japanese", meal:"lunch",
-    tags:["Japanese","Affordable","Trendy"], highlight:"Modern Japanese-Filipino fusion",
+    tags:["Japanese","Affordable","Trendy"],
     desc:"Ooma delivers creative Japanese-Filipino crossover food in a sleek, colorful space — maki rolls, crispy rice, and inventive small plates that make sharing fun.",
     tip:"Order the crispy salmon belly and the dynamite maki. Great for a fun, low-key lunch date.",
     bg:"#C41E3A" },
@@ -910,7 +926,7 @@ const SPOTS = [
   { id:11, name:"Wildflour Café + Bakery", emoji:"🥐", type:"restaurant", activityType:"cafe",
     location:"bgc", area:"26th St, BGC", budget:700, time:"half",
     vibe:"chill", cuisine:"american", meal:"breakfast",
-    tags:["Bakery","Brunch","Cozy"], highlight:"Best brunch in BGC",
+    tags:["Bakery","Brunch","Cozy"],
     desc:"The beloved Wildflour is a brunch institution — flaky pastries, excellent eggs benedict, strong coffee, and a warm, bakery-scented atmosphere that makes you want to linger.",
     tip:"Go on a weekday to avoid the long weekend queue. Get there by 9am for the best pastry selection.",
     bg:"#C97B5A" },
@@ -918,7 +934,7 @@ const SPOTS = [
   { id:12, name:"Bamba Bistro", emoji:"🥩", type:"restaurant", activityType:"restaurant",
     location:"bgc", area:"Burgos Circle, BGC", budget:1500, time:"evening",
     vibe:"fun", cuisine:"american", meal:"dinner", setting:"casual",
-    tags:["Steakhouse","Burgers","Lively"], highlight:"Best burger in Manila",
+    tags:["Steakhouse","Burgers","Lively"],
     desc:"A lively neighborhood bistro famous for its phenomenal wagyu burger and cocktails. Perfect for a relaxed, indulgent dinner with great drinks and even better conversation.",
     tip:"The Bamba Burger is mandatory. Pair with their truffle fries and an old fashioned.",
     bg:"#6B1A00" },
@@ -926,7 +942,7 @@ const SPOTS = [
   { id:13, name:"Sala Bistro", emoji:"🕯", type:"restaurant", activityType:"restaurant",
     location:"makati", area:"Legaspi Village, Makati", budget:1800, time:"evening",
     vibe:"romantic", cuisine:"french", meal:"dinner", setting:"hidden",
-    tags:["Intimate","European","Hidden Gem"], highlight:"One of Makati's most romantic tables",
+    tags:["Intimate","European","Hidden Gem"],
     desc:"A tucked-away gem with hushed lighting, European cuisine, and a wine list that impresses. Sala feels like stumbling upon a private Parisian supper club.",
     tip:"Reserve well ahead. Request the corner table. The duck confit is extraordinary.",
     bg:"#3D1F0A" },
@@ -934,7 +950,7 @@ const SPOTS = [
   { id:14, name:"Vikings Luxury Buffet", emoji:"🍤", type:"restaurant", activityType:"restaurant",
     location:"paranaque", area:"SM MOA / SM Megamall / Multiple", budget:1200, time:"half",
     vibe:"fun", cuisine:"filipino", meal:"lunch",
-    tags:["Buffet","Variety","Feast"], highlight:"500+ dishes — try everything",
+    tags:["Buffet","Variety","Feast"],
     desc:"When you both can't agree on just one cuisine, Vikings solves the problem beautifully. An enormous luxury buffet with live cooking stations covering everything from sushi to lechon.",
     tip:"Go for lunch — better pricing, less crowd. Prioritize the seafood and live stations.",
     bg:"#8B0000" },
@@ -942,7 +958,7 @@ const SPOTS = [
   { id:15, name:"Eight Cuts Burger Blends", emoji:"🍔", type:"restaurant", activityType:"restaurant",
     location:"bgc", area:"BGC / Greenbelt / Multiple", budget:700, time:"quick",
     vibe:"fun", cuisine:"american", meal:"lunch",
-    tags:["Burgers","Casual","Crowd-Pleaser"], highlight:"Craft smash burgers",
+    tags:["Burgers","Casual","Crowd-Pleaser"],
     desc:"Serious smash burgers with a menu designed for indecisive couples — creative blends, crispy fries, and milkshakes that bring all the joy of a diner date.",
     tip:"The truffle mushroom blend is outstanding. The thick shakes are perfect for sharing.",
     bg:"#4A2000" },
@@ -950,7 +966,7 @@ const SPOTS = [
   { id:16, name:"Sarsa Kitchen + Bar", emoji:"🍲", type:"restaurant", activityType:"restaurant",
     location:"bgc", area:"BGC / Greenbelt / Multiple", budget:800, time:"half",
     vibe:"foodie", cuisine:"filipino", meal:"dinner", setting:"casual",
-    tags:["Filipino","Modern","Flavorful"], highlight:"Ilonggo-inspired Filipino favorites",
+    tags:["Filipino","Modern","Flavorful"],
     desc:"Chef JP Anglo celebrates Visayan and Filipino flavors with a modern twist. The grilled meats, KBL soup, and bagnet are unforgettable — deeply soulful food.",
     tip:"Order the grilled pork isaw and the KBL (kadyos, baboy, langka). Perfect gateway Filipino food for newbies.",
     bg:"#7A3500" },
@@ -958,7 +974,7 @@ const SPOTS = [
   { id:17, name:"Yabu House of Katsu", emoji:"🍱", type:"restaurant", activityType:"restaurant",
     location:"bgc", area:"BGC / Multiple Locations", budget:700, time:"quick",
     vibe:"chill", cuisine:"japanese", meal:"lunch",
-    tags:["Japanese","Katsu","Reliable"], highlight:"Tokyo-quality tonkatsu in Manila",
+    tags:["Japanese","Katsu","Reliable"],
     desc:"The gold standard for tonkatsu in the Philippines. Crispy, golden, and served with unlimited cabbage and rice — a comforting, satisfying date lunch.",
     tip:"Go for the premium kurobuta pork set if celebrating. The sesame sauce is life-changing.",
     bg:"#B8860B" },
@@ -966,7 +982,7 @@ const SPOTS = [
   { id:18, name:"The Pig & Palm", emoji:"🐷", type:"restaurant", activityType:"restaurant",
     location:"bgc", area:"High Street, BGC", budget:1500, time:"evening",
     vibe:"fun", cuisine:"filipino", meal:"dinner", setting:"alfresco",
-    tags:["Filipino-Spanish","Al Fresco","Lively"], highlight:"Whole lechon as centerpiece",
+    tags:["Filipino-Spanish","Al Fresco","Lively"],
     desc:"A festive Filipino-Spanish restaurant that makes lechon the star of every occasion. Lively, delicious, and perfect for a celebratory date with lots of sharing.",
     tip:"Order the lechon paella. The outdoor terrace is perfect on cool evenings.",
     bg:"#8B1A00" },
@@ -974,7 +990,7 @@ const SPOTS = [
   { id:19, name:"Mecha Uma", emoji:"🫕", type:"restaurant", activityType:"restaurant",
     location:"makati", area:"Arya Residences, BGC", budget:1800, time:"evening",
     vibe:"foodie", cuisine:"japanese", meal:"dinner", setting:"finedining",
-    tags:["Omakase","Japanese","Intimate"], highlight:"Counter omakase experience",
+    tags:["Omakase","Japanese","Intimate"],
     desc:"Chef Bruce Ricketts' intimate omakase bar delivers a deeply personal Japanese dining experience. Each dish tells a story — a true foodie pilgrimage for adventurous couples.",
     tip:"Seat at the counter for the chef's running commentary. Book weeks in advance.",
     bg:"#1A1200" },
@@ -982,16 +998,15 @@ const SPOTS = [
   { id:20, name:"Lipad ng Pangarap", emoji:"🌇", type:"restaurant", activityType:"restaurant",
     location:"paranaque", area:"Seaside Blvd, MOA area", budget:1000, time:"evening",
     vibe:"romantic", cuisine:"filipino", meal:"dinner", setting:"scenic",
-    tags:["Seafood","Bayside","Sunset"], highlight:"Stunning Manila Bay sunset views",
+    tags:["Seafood","Bayside","Sunset"],
     desc:"A beloved seafood restaurant along the bay with a front-row view of Manila's legendary sunsets. Affordable, delicious, and achingly romantic at dusk.",
     tip:"Arrive at 5:30pm to catch the full golden hour over Manila Bay. Order the sugpo and grilled fish.",
     bg:"#E87520" },
 
-  // ── CAFÉS ────────────────────────────────────────────────────────────────────
   { id:21, name:"Yardstick Coffee", emoji:"☕", type:"restaurant", activityType:"cafe",
     location:"makati", area:"Legazpi Village, Makati", budget:300, time:"quick",
     vibe:"chill", cuisine:"", meal:"breakfast",
-    tags:["Specialty Coffee","Minimalist","Artsy"], highlight:"Award-winning baristas",
+    tags:["Specialty Coffee","Minimalist","Artsy"],
     desc:"Manila's most celebrated specialty coffee bar. The minimalist, loft-style space is perfect for a slow morning coffee date — sipping single-origins and talking for hours.",
     tip:"Try their seasonal filter coffee. Pair with a croissant. Bring a book or just each other.",
     bg:"#5C4033" },
@@ -999,7 +1014,7 @@ const SPOTS = [
   { id:22, name:"% Arabica Manila", emoji:"☕", type:"restaurant", activityType:"cafe",
     location:"bgc", area:"One Bonifacio High Street, BGC", budget:350, time:"quick",
     vibe:"chill", cuisine:"", meal:"breakfast",
-    tags:["Japanese Coffee","Minimalist","Iconic"], highlight:"Globally adored Japanese café brand",
+    tags:["Japanese Coffee","Minimalist","Iconic"],
     desc:"The iconic Japanese coffee brand's sleek white space is a social media favorite — but the coffee itself is genuinely world-class. Simple, beautiful, and memorable.",
     tip:"Order the signature latte and take it for a walk around BGC. Perfection in simplicity.",
     bg:"#2B2B2B" },
@@ -1007,7 +1022,7 @@ const SPOTS = [
   { id:23, name:"The Curator Coffee & Cocktails", emoji:"🍹", type:"restaurant", activityType:"cafe",
     location:"makati", area:"Legazpi Village, Makati", budget:500, time:"evening",
     vibe:"chill", cuisine:"", meal:"latenight",
-    tags:["Coffee + Cocktails","Unique","Cozy"], highlight:"Coffee by day, cocktails by night",
+    tags:["Coffee + Cocktails","Unique","Cozy"],
     desc:"A brilliantly conceived space that transforms from a specialty coffee bar in the morning to a craft cocktail bar at night. Perfect for a date that spans the full day.",
     tip:"Try a cocktail named after a coffee drink — the Espresso Martini variation is spectacular.",
     bg:"#1E1410" },
@@ -1015,7 +1030,7 @@ const SPOTS = [
   { id:24, name:"Commune Café", emoji:"🌱", type:"restaurant", activityType:"cafe",
     location:"makati", area:"Legazpi Village, Makati", budget:400, time:"half",
     vibe:"chill", cuisine:"", meal:"breakfast",
-    tags:["Vegan-Friendly","Garden","Community"], highlight:"Beautiful garden courtyard",
+    tags:["Vegan-Friendly","Garden","Community"],
     desc:"A community-centered café with a lush garden courtyard, plant-forward menu, and a gentle, creative energy. Perfect for a slow morning among plants and good people.",
     tip:"Get the açaí bowl and a cold brew in the garden. Very popular on weekends — go early.",
     bg:"#3A5A1E" },
@@ -1023,7 +1038,7 @@ const SPOTS = [
   { id:25, name:"Buna Café", emoji:"🫖", type:"restaurant", activityType:"cafe",
     location:"qc", area:"Maginhawa St, QC", budget:300, time:"quick",
     vibe:"cultural", cuisine:"", meal:"breakfast",
-    tags:["Bohemian","QC Landmark","Artsy"], highlight:"Heart of the Maginhawa food strip",
+    tags:["Bohemian","QC Landmark","Artsy"],
     desc:"A charming bohemian café along QC's famous Maginhawa food street. Perfect coffee, eclectic interiors, and a neighborhood vibe that feels entirely authentic.",
     tip:"Explore the whole Maginhawa strip on foot after your coffee. Bring cash.",
     bg:"#4A3020" },
@@ -1031,16 +1046,15 @@ const SPOTS = [
   { id:26, name:"Hiraya Café", emoji:"🌸", type:"restaurant", activityType:"cafe",
     location:"manila", area:"Ermita, Manila", budget:400, time:"quick",
     vibe:"cultural", cuisine:"", meal:"breakfast",
-    tags:["Artsy","Gallery Café","Hidden Gem"], highlight:"Café inside a working art gallery",
+    tags:["Artsy","Gallery Café","Hidden Gem"],
     desc:"Tucked into a heritage building in Ermita, Hiraya is a café and gallery in one — original artworks hang above every table, and the coffee is as carefully crafted as the art.",
     tip:"Linger over coffee and then browse the gallery. Come on a quiet Tuesday morning.",
     bg:"#4A2D50" },
 
-  // ── DESSERT ──────────────────────────────────────────────────────────────────
   { id:27, name:"Pablo Cheesecake", emoji:"🧀", type:"restaurant", activityType:"dessert",
     location:"bgc", area:"S Maison / BGC", budget:500, time:"quick",
     vibe:"fun", cuisine:"", meal:"latenight",
-    tags:["Dessert","Japanese","Cheesecake"], highlight:"Famous baked-to-order jiggly cheesecakes",
+    tags:["Dessert","Japanese","Cheesecake"],
     desc:"The original Pablo rare cheesecake experience — molten, jiggly Japanese cheesecakes baked fresh. A fun, delicious pitstop that always impresses.",
     tip:"Get the original rare cheesecake. Best eaten warm right there.",
     bg:"#D4A574" },
@@ -1048,7 +1062,7 @@ const SPOTS = [
   { id:28, name:"Mango Sugal at 22 Cravings", emoji:"🥭", type:"restaurant", activityType:"dessert",
     location:"paranaque", area:"SM Mall of Asia / Multiple", budget:350, time:"quick",
     vibe:"fun", cuisine:"", meal:"latenight",
-    tags:["Filipino Dessert","Mango","Refreshing"], highlight:"Legendary mango desserts",
+    tags:["Filipino Dessert","Mango","Refreshing"],
     desc:"22 Cravings is home to the best Filipino mango desserts in the metro — the mango sago cream and mango float milkshake are dangerously addictive.",
     tip:"Perfect after a bay walk or MOA visit. The mango sago is better than it has any right to be.",
     bg:"#F5A500" },
@@ -1056,7 +1070,7 @@ const SPOTS = [
   { id:29, name:"Bizu Patisserie", emoji:"🍰", type:"restaurant", activityType:"dessert",
     location:"bgc", area:"BGC / Greenbelt / Multiple", budget:600, time:"quick",
     vibe:"romantic", cuisine:"", meal:"latenight",
-    tags:["French Pastry","Elegant","Macarons"], highlight:"Best macarons in Manila",
+    tags:["French Pastry","Elegant","Macarons"],
     desc:"A refined French patisserie that feels like stepping into Paris. The macarons, eclairs, and afternoon tea sets are a lovely way to celebrate any occasion.",
     tip:"Buy a box of assorted macarons together and rate each flavor. The salted caramel wins every time.",
     bg:"#D4A0B0" },
@@ -1064,16 +1078,15 @@ const SPOTS = [
   { id:30, name:"Xocolat", emoji:"🍫", type:"restaurant", activityType:"dessert",
     location:"bgc", area:"Bonifacio High Street, BGC", budget:700, time:"quick",
     vibe:"romantic", cuisine:"", meal:"latenight",
-    tags:["Chocolate","Fondue","Romantic"], highlight:"Chocolate fondue for two",
+    tags:["Chocolate","Fondue","Romantic"],
     desc:"A chocolate lover's paradise. The chocolate fondue set — with fresh fruits and marshmallows — is one of Manila's most romantic dessert experiences.",
     tip:"Order the dark chocolate fondue. It's made for sharing and feels incredibly indulgent.",
     bg:"#4A1A00" },
 
-  // ── BARS & NIGHTLIFE ─────────────────────────────────────────────────────────
   { id:31, name:"The Owl Bar", emoji:"🦉", type:"leisure", activityType:"bar",
     location:"bgc", area:"7th Ave, BGC", budget:800, time:"evening",
     vibe:"chill", cuisine:"", meal:"latenight",
-    tags:["Cocktail Bar","Speakeasy","Dim & Cozy"], highlight:"Excellent craft cocktails",
+    tags:["Cocktail Bar","Speakeasy","Dim & Cozy"],
     desc:"A dimly lit, speakeasy-style bar tucked away in BGC. Known for creative cocktails, a curated vinyl playlist, and a perfectly moody atmosphere.",
     tip:"Try the seasonal cocktail — the bartenders are artists. No reservations, arrive by 7pm.",
     bg:"#1A0E05" },
@@ -1081,7 +1094,7 @@ const SPOTS = [
   { id:32, name:"Black Market Bar", emoji:"🍸", type:"leisure", activityType:"bar",
     location:"bgc", area:"9th Ave, BGC", budget:1000, time:"evening",
     vibe:"fun", cuisine:"", meal:"latenight",
-    tags:["Bar","Live Music","Energetic"], highlight:"Live bands & great vibes",
+    tags:["Bar","Live Music","Energetic"],
     desc:"An energetic spot with live music, craft cocktails, and a crowd that knows how to have a good time. Great for a date that wants to dance and celebrate.",
     tip:"Friday nights have the best live acts. Arrive before 9pm to get a table.",
     bg:"#0D0D0D" },
@@ -1089,7 +1102,7 @@ const SPOTS = [
   { id:33, name:"Handlebar Manila", emoji:"🏍", type:"leisure", activityType:"bar",
     location:"bgc", area:"Kalayaan Ave, BGC", budget:700, time:"evening",
     vibe:"fun", cuisine:"", meal:"latenight",
-    tags:["Rooftop","Casual Bar","Motorcycles"], highlight:"Rooftop bar with cool moto-culture vibe",
+    tags:["Rooftop","Casual Bar","Motorcycles"],
     desc:"A rooftop bar with a motorcycle theme, cold beers, great cocktails, and BGC views. Unpretentious, fun, and always full of energy.",
     tip:"Best on a cool, breezy evening. The rooftop fills up fast after 8pm.",
     bg:"#1C0800" },
@@ -1097,7 +1110,7 @@ const SPOTS = [
   { id:34, name:"No. 35 BGC", emoji:"🥂", type:"leisure", activityType:"bar",
     location:"bgc", area:"35th St, BGC", budget:1200, time:"evening",
     vibe:"romantic", cuisine:"", meal:"latenight",
-    tags:["Wine Bar","Intimate","Romantic"], highlight:"Best wine bar in BGC",
+    tags:["Wine Bar","Intimate","Romantic"],
     desc:"A sophisticated wine bar with a carefully curated selection, small bites, and intimate lighting. Perfect for a date that centers on good wine and great conversation.",
     tip:"Ask the sommelier for a pairing recommendation — they're genuinely knowledgeable and friendly.",
     bg:"#3D1A2B" },
@@ -1105,15 +1118,15 @@ const SPOTS = [
   { id:35, name:"Niner Ichi Nana", emoji:"🎷", type:"leisure", activityType:"bar",
     location:"makati", area:"Poblacion, Makati", budget:900, time:"evening",
     vibe:"cultural", cuisine:"", meal:"latenight",
-    tags:["Jazz Bar","Live Music","Makati Poblacion"], highlight:"Jazz standards live every night",
+    tags:["Jazz Bar","Live Music","Makati Poblacion"],
     desc:"A beloved jazz bar in Poblacion where world-class Filipino musicians play live every evening. Intimate, sophisticated, and utterly romantic.",
     tip:"Request a classic from the performers — they take it in stride. The cocktail list is excellent.",
     bg:"#0A0A1A" },
 
-  { id:36, name:"The Backroom", emoji:"🕵️", type:"leisure", activityType:"bar",
+  { id:36, name:"The Backroom", emoji:"🕵", type:"leisure", activityType:"bar",
     location:"makati", area:"Poblacion, Makati", budget:800, time:"evening",
     vibe:"adventurous", cuisine:"", meal:"latenight",
-    tags:["Speakeasy","Hidden","Cocktails"], highlight:"Hidden speakeasy — find the entrance",
+    tags:["Speakeasy","Hidden","Cocktails"],
     desc:"You have to find it to enter — a speakeasy hidden behind a fake door in Poblacion. Inside: extraordinary cocktails, dim lighting, and the delight of a secret shared.",
     tip:"Look for the inconspicuous door. The password changes. Half the fun is finding it.",
     bg:"#0F0A00" },
@@ -1121,16 +1134,15 @@ const SPOTS = [
   { id:37, name:"Z Hostel Rooftop Pool Bar", emoji:"🏊", type:"leisure", activityType:"bar",
     location:"makati", area:"Poblacion, Makati", budget:600, time:"evening",
     vibe:"fun", cuisine:"", meal:"latenight",
-    tags:["Rooftop Pool","Party Vibes","Views"], highlight:"Rooftop pool with city views",
+    tags:["Rooftop Pool","Party Vibes","Views"],
     desc:"A rooftop pool bar in the heart of Poblacion with incredible Makati skyline views, cool cocktails, and an electric atmosphere. Day drinking with a view never looked this good.",
     tip:"Day pass available. Bring a swimsuit for an extra fun date experience.",
     bg:"#0D2A4A" },
 
-  // ── ACTIVITIES ───────────────────────────────────────────────────────────────
   { id:38, name:"Pottery Workshop — Craft MNL", emoji:"🏺", type:"activity", activityType:"cooking",
     location:"bgc", area:"BGC / Makati area", budget:1500, time:"half",
     vibe:"fun", cuisine:"", meal:"",
-    tags:["Workshop","Creative","Hands-On"], highlight:"Make something together to keep forever",
+    tags:["Workshop","Creative","Hands-On"],
     desc:"A beginner-friendly pottery and ceramics workshop where you and your partner create something together from scratch — a perfectly tactile, memorable date.",
     tip:"Book at least 3 days ahead. Wear clothes you don't mind getting clay on.",
     bg:"#A0856A" },
@@ -1138,7 +1150,7 @@ const SPOTS = [
   { id:39, name:"Manila Ocean Park", emoji:"🐠", type:"activity", activityType:"museum",
     location:"manila", area:"Quirino Grandstand, Manila", budget:800, time:"half",
     vibe:"fun", cuisine:"", meal:"",
-    tags:["Aquarium","Interactive","Romantic"], highlight:"Walk-through aquarium tunnel",
+    tags:["Aquarium","Interactive","Romantic"],
     desc:"Stroll hand-in-hand through the stunning walk-through aquarium tunnel, watch jellyfish float above you, and catch a sea lion show. Unexpectedly romantic.",
     tip:"Visit on a weekday morning. The jellyfish gallery at dusk is magical.",
     bg:"#003d5b" },
@@ -1146,7 +1158,7 @@ const SPOTS = [
   { id:40, name:"BGC Art Trail", emoji:"🎨", type:"activity", activityType:"museum",
     location:"bgc", area:"Bonifacio Global City", budget:0, time:"half",
     vibe:"cultural", cuisine:"", meal:"",
-    tags:["Free","Street Art","Walking"], highlight:"100+ artworks, entirely free",
+    tags:["Free","Street Art","Walking"],
     desc:"Explore over 100 large-scale murals and sculptures scattered across BGC's streets. A free, spontaneous art date perfect for the curious couple.",
     tip:"Start at Bonifacio High Street and follow the map. Best explored in late afternoon golden hour.",
     bg:"#4A1942" },
@@ -1154,7 +1166,7 @@ const SPOTS = [
   { id:41, name:"Escape Room — ClueQuest MNL", emoji:"🔐", type:"activity", activityType:"sports",
     location:"qc", area:"Quezon City / Taguig", budget:700, time:"quick",
     vibe:"adventurous", cuisine:"", meal:"",
-    tags:["Escape Room","Teamwork","Thrilling"], highlight:"Test your bond under pressure",
+    tags:["Escape Room","Teamwork","Thrilling"],
     desc:"Lock yourselves in a themed escape room and solve puzzles together — nothing bonds a couple like trying to escape together in 60 minutes.",
     tip:"Choose a medium-difficulty room for your first time. Go on a weekday.",
     bg:"#1C1C1C" },
@@ -1162,7 +1174,7 @@ const SPOTS = [
   { id:42, name:"Cooking Class — Kitchen Ni Juan", emoji:"👨‍🍳", type:"activity", activityType:"cooking",
     location:"makati", area:"Legaspi Village, Makati", budget:1800, time:"half",
     vibe:"fun", cuisine:"", meal:"",
-    tags:["Cooking Class","Filipino","Interactive"], highlight:"Cook & eat together",
+    tags:["Cooking Class","Filipino","Interactive"],
     desc:"Learn to cook classic Filipino dishes together, from kare-kare to leche flan, guided by a professional chef. The meal you create becomes your reward.",
     tip:"Book as a couple for a private session. Includes ingredients and wine. Aprons provided!",
     bg:"#5A2D0C" },
@@ -1170,15 +1182,15 @@ const SPOTS = [
   { id:43, name:"Breakout Philippines", emoji:"🗝", type:"activity", activityType:"sports",
     location:"bgc", area:"High Street, BGC / Makati", budget:650, time:"quick",
     vibe:"adventurous", cuisine:"", meal:"",
-    tags:["Escape Room","Fun","Competitive"], highlight:"Award-winning escape room chain",
+    tags:["Escape Room","Fun","Competitive"],
     desc:"One of the Philippines' best escape room companies with beautifully designed, story-driven rooms. You'll laugh, panic, and bond in equal measure.",
     tip:"The horror rooms are great for excuses to hold each other close. Book 2 days ahead for weekends.",
     bg:"#1A0A0A" },
 
-  { id:44, name:"Archery Tagaytay / Urban Archery", emoji:"🏹", type:"activity", activityType:"sports",
+  { id:44, name:"Urban Archery", emoji:"🏹", type:"activity", activityType:"sports",
     location:"bgc", area:"Various NCR locations", budget:600, time:"quick",
     vibe:"adventurous", cuisine:"", meal:"",
-    tags:["Archery","Active","Unique"], highlight:"Surprisingly addictive together",
+    tags:["Archery","Active","Unique"],
     desc:"Archery is one of the most unexpectedly fun couple activities — competitive, tactile, and satisfying. Urban archery ranges in the metro make it easy to try.",
     tip:"Beginners welcome. Make it a competition with a playful stake.",
     bg:"#2D1B00" },
@@ -1186,15 +1198,15 @@ const SPOTS = [
   { id:45, name:"Painting with a Twist", emoji:"🖌", type:"activity", activityType:"museum",
     location:"bgc", area:"BGC / Eastwood / Multiple", budget:1200, time:"half",
     vibe:"fun", cuisine:"", meal:"",
-    tags:["Art Class","BYOB","Creative"], highlight:"Paint together, BYOB welcome",
+    tags:["Art Class","BYOB","Creative"],
     desc:"A guided painting class where you both recreate the same canvas with your own spin — wine in hand. The results are always hilarious, always personal.",
     tip:"Bring a bottle of wine. Choose a theme that means something to both of you.",
     bg:"#6A2D8A" },
 
-  { id:46, name:"Ice Skating at SM MOA Ice Rink", emoji:"⛸", type:"activity", activityType:"sports",
+  { id:46, name:"Ice Skating at SM MOA", emoji:"⛸", type:"activity", activityType:"sports",
     location:"paranaque", area:"SM Mall of Asia, Parañaque", budget:400, time:"quick",
     vibe:"fun", cuisine:"", meal:"",
-    tags:["Ice Skating","Romantic","Beginner-Friendly"], highlight:"Largest ice rink in the Philippines",
+    tags:["Ice Skating","Romantic","Beginner-Friendly"],
     desc:"Hold hands as you wobble around Southeast Asia's biggest ice rink. Equal parts hilarious and romantic — and the perfect excuse to hold on tight.",
     tip:"Go on a weekday afternoon for the least crowded experience. Skate rental included.",
     bg:"#0A2A5A" },
@@ -1202,15 +1214,15 @@ const SPOTS = [
   { id:47, name:"Axe-Throwing — Hatchet Manila", emoji:"🪓", type:"activity", activityType:"sports",
     location:"bgc", area:"BGC / Makati", budget:800, time:"quick",
     vibe:"adventurous", cuisine:"", meal:"",
-    tags:["Axe Throwing","Unique","Competitive"], highlight:"The most unexpected date activity",
+    tags:["Axe Throwing","Unique","Competitive"],
     desc:"Throw axes at wooden targets and release the week's stress together. Surprisingly easy to pick up, endlessly competitive, and one of Manila's most memorable date experiences.",
     tip:"Safety briefing included. Make up your own scoring rules. Loser buys dinner.",
     bg:"#3A1500" },
 
-  { id:48, name:"Bouldering / Rock Climbing — Climb Central", emoji:"🧗", type:"activity", activityType:"sports",
+  { id:48, name:"Bouldering — Climb Central", emoji:"🧗", type:"activity", activityType:"sports",
     location:"bgc", area:"BGC / Makati area", budget:600, time:"half",
     vibe:"adventurous", cuisine:"", meal:"",
-    tags:["Climbing","Active","Teamwork"], highlight:"Conquer walls together",
+    tags:["Climbing","Active","Teamwork"],
     desc:"An indoor bouldering gym where you can challenge each other on colorful climbing walls of varying difficulty. Physical, fun, and surprisingly romantic when one of you needs a spot.",
     tip:"No experience needed — staff will guide you. The beginner walls are approachable and satisfying.",
     bg:"#2A2A2A" },
@@ -1218,7 +1230,7 @@ const SPOTS = [
   { id:49, name:"Aerial Silks / Pole Class", emoji:"🎪", type:"activity", activityType:"sports",
     location:"bgc", area:"BGC / Makati", budget:1000, time:"half",
     vibe:"adventurous", cuisine:"", meal:"",
-    tags:["Aerial Arts","Unique","Fitness"], highlight:"Learn something completely new together",
+    tags:["Aerial Arts","Unique","Fitness"],
     desc:"Take a beginner aerial silks or pole fitness class together. It's a full-body workout disguised as pure fun — and you'll be absolutely amazed at what your body can do.",
     tip:"Wear fitted, comfortable clothes. You'll be sore the next day — totally worth it.",
     bg:"#5A1A5A" },
@@ -1226,7 +1238,7 @@ const SPOTS = [
   { id:50, name:"Board Game Café — Board & Brew", emoji:"🎲", type:"activity", activityType:"sports",
     location:"bgc", area:"BGC / QC / Multiple", budget:400, time:"half",
     vibe:"fun", cuisine:"", meal:"",
-    tags:["Board Games","Café","Chill"], highlight:"300+ games, food & drinks included",
+    tags:["Board Games","Café","Chill"],
     desc:"A cozy café with hundreds of board games — from quick party games to deep strategy titles. Ideal for couples who love a good competition or a shared challenge.",
     tip:"Ask the staff to recommend a game for couples. The cover charge includes unlimited play.",
     bg:"#2A3D1A" },
@@ -1234,7 +1246,7 @@ const SPOTS = [
   { id:51, name:"UP Diliman Campus Walk", emoji:"🌳", type:"activity", activityType:"park",
     location:"qc", area:"University of the Philippines, QC", budget:0, time:"half",
     vibe:"chill", cuisine:"", meal:"",
-    tags:["Free","Walking","Romantic"], highlight:"One of Manila's most beautiful campus walks",
+    tags:["Free","Walking","Romantic"],
     desc:"The sprawling, tree-lined UP Diliman campus is one of the city's great hidden romantic walks — colonial architecture, quiet ponds, and a Sunken Garden perfect for picnics.",
     tip:"Bring a picnic mat and food from the nearby carinderia row. Sunset at the Oblation is magical.",
     bg:"#1E4D0A" },
@@ -1242,16 +1254,15 @@ const SPOTS = [
   { id:52, name:"Planetarium Show — Manila", emoji:"🌠", type:"activity", activityType:"museum",
     location:"manila", area:"Rizal Park, Manila", budget:200, time:"quick",
     vibe:"romantic", cuisine:"", meal:"",
-    tags:["Planetarium","Romantic","Stargazing"], highlight:"Stargaze together under a dome",
+    tags:["Planetarium","Romantic","Stargazing"],
     desc:"The Manila Planetarium in Rizal Park offers dome shows that take you through the cosmos — lying back in the dark watching the galaxy spin above is quietly, surprisingly romantic.",
     tip:"Check the schedule in advance. Combine with a walk through Rizal Park and Luneta.",
     bg:"#050520" },
 
-  // ── OUTDOOR & PARKS ──────────────────────────────────────────────────────────
   { id:53, name:"Arroceros Forest Park", emoji:"🌿", type:"outdoor", activityType:"park",
     location:"manila", area:"Arroceros St, Manila", budget:50, time:"quick",
     vibe:"chill", cuisine:"", meal:"",
-    tags:["Urban Forest","Hidden Gem","Free"], highlight:"Manila's last urban forest",
+    tags:["Urban Forest","Hidden Gem","Free"],
     desc:"A lush, serene pocket of nature in the heart of Manila — butterflies, old trees, and birdsong. An unexpected oasis for a quiet morning walk together.",
     tip:"Arrive early morning for the calmest atmosphere. Bring coffee and enjoy the birdsong.",
     bg:"#2D5016" },
@@ -1259,7 +1270,7 @@ const SPOTS = [
   { id:54, name:"La Mesa Eco Park", emoji:"🌲", type:"outdoor", activityType:"park",
     location:"qc", area:"Novaliches, Quezon City", budget:150, time:"half",
     vibe:"adventurous", cuisine:"", meal:"",
-    tags:["Nature","Kayaking","Picnic"], highlight:"Kayaking & forest trails inside the city",
+    tags:["Nature","Kayaking","Picnic"],
     desc:"A sprawling eco-park with forest trails, a dam lake perfect for kayaking, and quiet picnic spots. A refreshing green escape inside the city.",
     tip:"Rent a kayak together — it's very affordable. Go early to snag a shaded picnic spot.",
     bg:"#2E5E1E" },
@@ -1267,7 +1278,7 @@ const SPOTS = [
   { id:55, name:"Rizal Park & Luneta", emoji:"🏛", type:"outdoor", activityType:"park",
     location:"manila", area:"Ermita, Manila", budget:0, time:"half",
     vibe:"cultural", cuisine:"", meal:"",
-    tags:["Historic","Free","Scenic"], highlight:"Manila's most iconic park — utterly free",
+    tags:["Historic","Free","Scenic"],
     desc:"The grand historical park at Manila's heart: broad lawns, fountains, the iconic Rizal Monument, and a peaceful atmosphere that feels removed from the city's chaos.",
     tip:"Go late afternoon for the sunset colors. Grab dirty ice cream from the vendors along the way.",
     bg:"#1A3A00" },
@@ -1275,24 +1286,23 @@ const SPOTS = [
   { id:56, name:"Nuvali Lake Walk", emoji:"🦢", type:"outdoor", activityType:"park",
     location:"alabang", area:"Nuvali, Santa Rosa (near NCR)", budget:200, time:"half",
     vibe:"romantic", cuisine:"", meal:"",
-    tags:["Lake","Scenic","Walk"], highlight:"Lakeside walking trail & swan boats",
+    tags:["Lake","Scenic","Walk"],
     desc:"A scenic lakeside estate just south of Metro Manila with walking trails, swan boat rentals, and a peaceful atmosphere that feels miles away from city life.",
     tip:"Rent a swan pedal boat for a quintessentially romantic lake date. Best on weekend mornings.",
     bg:"#1A3D4A" },
 
-  { id:57, name:"Ocean Park BGC Walking Path", emoji:"🌊", type:"outdoor", activityType:"park",
+  { id:57, name:"BGC Evening Walk", emoji:"🌊", type:"outdoor", activityType:"park",
     location:"bgc", area:"Mind Museum area, BGC", budget:0, time:"quick",
     vibe:"chill", cuisine:"", meal:"",
-    tags:["Free","Walking","City Views"], highlight:"BGC's best evening stroll route",
+    tags:["Free","Walking","City Views"],
     desc:"The tree-lined walking paths winding through BGC's northern blocks are genuinely beautiful at night — fountains, sculptures, and warm lighting make this a free and lovely date.",
     tip:"Start at the Mind Museum and walk towards Upper McKinley. Get ice cream along the way.",
     bg:"#0A1A2A" },
 
-  // ── SPA & WELLNESS ───────────────────────────────────────────────────────────
   { id:58, name:"I'M Hotel Spa", emoji:"🧖", type:"leisure", activityType:"spa",
     location:"makati", area:"Glorietta, Makati", budget:2500, time:"half",
     vibe:"romantic", cuisine:"", meal:"",
-    tags:["Couples Spa","Luxury","Pampering"], highlight:"Side-by-side couples treatment rooms",
+    tags:["Couples Spa","Luxury","Pampering"],
     desc:"A luxurious spa offering couples massage and wellness packages in a serene, beautifully designed setting. Melt away stress together and emerge glowing.",
     tip:"Book the couples' package that includes a jacuzzi session. Reserve at least 2 days in advance.",
     bg:"#3D2B4A" },
@@ -1300,7 +1310,7 @@ const SPOTS = [
   { id:59, name:"Chi Spa at Shangri-La BGC", emoji:"🌺", type:"leisure", activityType:"spa",
     location:"bgc", area:"Shangri-La The Fort, BGC", budget:4500, time:"half",
     vibe:"romantic", cuisine:"", meal:"",
-    tags:["Luxury Spa","5-Star","Couples"], highlight:"Award-winning hotel spa experience",
+    tags:["Luxury Spa","5-Star","Couples"],
     desc:"The Chi Spa at Shangri-La is one of the finest luxury spa experiences in the Philippines. Impeccable service, stunning facilities, and treatments that feel like pure heaven.",
     tip:"Arrive 30 minutes early to use the relaxation lounge and facilities beforehand.",
     bg:"#1A0A2A" },
@@ -1308,7 +1318,7 @@ const SPOTS = [
   { id:60, name:"The Spa at Solaire", emoji:"💆", type:"leisure", activityType:"spa",
     location:"paranaque", area:"Solaire Resort, Parañaque", budget:3500, time:"half",
     vibe:"romantic", cuisine:"", meal:"",
-    tags:["Hotel Spa","Luxury","Couples"], highlight:"Resort-style spa in the city",
+    tags:["Hotel Spa","Luxury","Couples"],
     desc:"A world-class spa at one of Manila's premier integrated resorts. The couples suite with private jacuzzi and steam room is one of Manila's most indulgent splurges.",
     tip:"Book the 2-hour couples package. Follow with dinner at one of Solaire's restaurants.",
     bg:"#0D0D1A" },
@@ -1316,16 +1326,15 @@ const SPOTS = [
   { id:61, name:"Muscle Works Spa", emoji:"🤲", type:"leisure", activityType:"spa",
     location:"bgc", area:"BGC / Makati / Multiple", budget:800, time:"quick",
     vibe:"chill", cuisine:"", meal:"",
-    tags:["Affordable Spa","Massage","Practical"], highlight:"Great quality at accessible prices",
+    tags:["Affordable Spa","Massage","Practical"],
     desc:"A reliable, well-priced massage and spa chain perfect for a relaxing date without the splurge. Clean, professional, and genuinely therapeutic.",
     tip:"Book the 90-minute Swedish massage side by side. Perfect pre-dinner relaxation.",
     bg:"#2A1A2A" },
 
-  // ── CINEMA & LEISURE ─────────────────────────────────────────────────────────
   { id:62, name:"Cinema at The Podium", emoji:"🎬", type:"leisure", activityType:"cinema",
     location:"pasig", area:"The Podium, Mandaluyong", budget:400, time:"quick",
     vibe:"chill", cuisine:"", meal:"evening",
-    tags:["Cinema","Classic Date","Recliners"], highlight:"Plush recliner seats",
+    tags:["Cinema","Classic Date","Recliners"],
     desc:"Catch the latest film in plush recliner seats at this mall's premium cinemas. Simple, timeless, and reliably great for a low-pressure date.",
     tip:"Book the Director's Club seats for the best experience. Get there early for popcorn runs.",
     bg:"#1A1A40" },
@@ -1333,7 +1342,7 @@ const SPOTS = [
   { id:63, name:"IMAX at SM MOA", emoji:"🎥", type:"leisure", activityType:"cinema",
     location:"paranaque", area:"SM Mall of Asia, Parañaque", budget:500, time:"quick",
     vibe:"fun", cuisine:"", meal:"evening",
-    tags:["IMAX","Cinema","Blockbuster"], highlight:"Biggest screen in the metro",
+    tags:["IMAX","Cinema","Blockbuster"],
     desc:"The Philippines' biggest IMAX screen delivers a truly cinematic experience. Blockbusters hit different on an IMAX screen at the Bay — perfect for date night.",
     tip:"Book online at least a day ahead for weekend screenings. Center seats, middle rows are best.",
     bg:"#0D0020" },
@@ -1341,16 +1350,15 @@ const SPOTS = [
   { id:64, name:"Drive-In Movie at Greenfield", emoji:"🚗", type:"leisure", activityType:"cinema",
     location:"mandaluyong", area:"Greenfield District, Mandaluyong", budget:600, time:"evening",
     vibe:"romantic", cuisine:"", meal:"evening",
-    tags:["Drive-In","Unique","Retro Romantic"], highlight:"Old-school drive-in cinema experience",
+    tags:["Drive-In","Unique","Retro Romantic"],
     desc:"One of Manila's few drive-in cinema experiences — park up, tune in, and watch a movie from your own car. Wonderfully nostalgic and unexpectedly romantic.",
     tip:"Bring a blanket and snacks. Get there early for the best parking spot facing the screen.",
     bg:"#0A0A20" },
 
-  // ── MUSEUMS & CULTURE ────────────────────────────────────────────────────────
   { id:65, name:"National Museum Complex", emoji:"🏛", type:"activity", activityType:"museum",
     location:"manila", area:"Rizal Park, Manila", budget:0, time:"half",
     vibe:"cultural", cuisine:"", meal:"",
-    tags:["Free","National Treasure","Art & History"], highlight:"Entirely free, world-class collection",
+    tags:["Free","National Treasure","Art & History"],
     desc:"The National Museum of Fine Arts, Natural History, and Anthropology form an extraordinary complex around Rizal Park — all completely free. Juan Luna's Spoliarium alone is worth the trip.",
     tip:"Start with Fine Arts (Spoliarium!), then Natural History for the Tree of Life atrium. Arrive at opening.",
     bg:"#2A1500" },
@@ -1358,7 +1366,7 @@ const SPOTS = [
   { id:66, name:"The Mind Museum", emoji:"🔬", type:"activity", activityType:"museum",
     location:"bgc", area:"JY Campos Park, BGC", budget:800, time:"half",
     vibe:"fun", cuisine:"", meal:"",
-    tags:["Science Museum","Interactive","Curious Couples"], highlight:"Best science museum in PH",
+    tags:["Science Museum","Interactive","Curious Couples"],
     desc:"The Philippines' premier science museum is genuinely magical for adults — interactive exhibits on the cosmos, life, matter, and human consciousness. Intellectual and fun in equal measure.",
     tip:"Allocate 3 full hours. The planetarium show is a must-add. Great for curious, playful couples.",
     bg:"#003A5C" },
@@ -1366,7 +1374,7 @@ const SPOTS = [
   { id:67, name:"Pinto Art Museum", emoji:"🖼", type:"activity", activityType:"museum",
     location:"qc", area:"Antipolo (near QC border)", budget:200, time:"half",
     vibe:"cultural", cuisine:"", meal:"",
-    tags:["Art Museum","Garden","Romantic"], highlight:"Stunning Mediterranean hillside gallery",
+    tags:["Art Museum","Garden","Romantic"],
     desc:"Perched in the hills of Antipolo, Pinto is one of the Philippines' most beautiful museums — a series of whitewashed galleries connected by manicured gardens and ponds. Truly breathtaking.",
     tip:"Come in the morning for soft light. The garden areas between galleries are perfect for photos.",
     bg:"#3A2000" },
@@ -1374,7 +1382,7 @@ const SPOTS = [
   { id:68, name:"Intramuros Walking Tour", emoji:"🏰", type:"activity", activityType:"museum",
     location:"manila", area:"Intramuros, Manila", budget:300, time:"half",
     vibe:"cultural", cuisine:"", meal:"",
-    tags:["Historical","Walking Tour","Free"], highlight:"400 years of history underfoot",
+    tags:["Historical","Walking Tour","Iconic"],
     desc:"The Walled City of Manila is one of the most evocative historical sites in Southeast Asia. Walk cobblestone streets, explore Fort Santiago, and feel centuries of history together.",
     tip:"Rent bamboo bikes inside the walls — it's the best way to explore. Sunset over the walls is stunning.",
     bg:"#3A2500" },
@@ -1382,16 +1390,15 @@ const SPOTS = [
   { id:69, name:"Ayala Museum", emoji:"🏺", type:"activity", activityType:"museum",
     location:"makati", area:"Greenbelt 4, Makati", budget:500, time:"half",
     vibe:"cultural", cuisine:"", meal:"",
-    tags:["Filipino History","Gold Collection","Air-Conditioned"], highlight:"Philippines' premier private museum",
+    tags:["Filipino History","Gold Collection","Air-Conditioned"],
     desc:"One of the country's finest museums with an extraordinary pre-colonial gold collection, dioramas of Philippine history, and beautifully curated modern Filipino art galleries.",
     tip:"The diorama hall is surprisingly gripping. Combine with coffee at nearby Wildflour.",
     bg:"#4A3000" },
 
-  // ── SHOPPING AS A DATE ───────────────────────────────────────────────────────
   { id:70, name:"Salcedo Saturday Market", emoji:"🥬", type:"activity", activityType:"shopping",
     location:"makati", area:"Salcedo Village, Makati", budget:500, time:"half",
     vibe:"chill", cuisine:"", meal:"breakfast",
-    tags:["Farmers Market","Weekend","Food Stalls"], highlight:"Manila's best Saturday farmers market",
+    tags:["Farmers Market","Weekend","Food Stalls"],
     desc:"A beloved Saturday morning tradition — wander through stalls of organic produce, artisan bread, freshly cooked food, and handmade crafts. Bring cash and an appetite.",
     tip:"Arrive early (7-8am) before the crowds. Split a big breakfast by sampling from different stalls.",
     bg:"#2A5A00" },
@@ -1399,7 +1406,7 @@ const SPOTS = [
   { id:71, name:"Legazpi Sunday Market", emoji:"🛍", type:"activity", activityType:"shopping",
     location:"makati", area:"Legazpi Village, Makati", budget:400, time:"quick",
     vibe:"chill", cuisine:"", meal:"breakfast",
-    tags:["Sunday Market","Artisan","Chill Morning"], highlight:"Artisan goods & street food",
+    tags:["Sunday Market","Artisan","Chill Morning"],
     desc:"The Sunday counterpart to Salcedo Market — slightly smaller, slightly more artisan-focused, with handmade goods, vintage items, and excellent street food.",
     tip:"Perfect for a lazy Sunday morning. Buy a potted plant for your home together.",
     bg:"#3A4A00" },
@@ -1407,75 +1414,73 @@ const SPOTS = [
   { id:72, name:"Greenhills Shopping Center", emoji:"💎", type:"activity", activityType:"shopping",
     location:"mandaluyong", area:"Greenhills, Mandaluyong", budget:500, time:"half",
     vibe:"fun", cuisine:"", meal:"",
-    tags:["Tiangge","Jewelry","Bargain Hunt"], highlight:"Best place to buy jewelry together",
+    tags:["Tiangge","Jewelry","Bargain Hunt"],
     desc:"The legendary Greenhills tiangge is a sensory adventure — haggle for pearls, gold jewelry, bags, and electronics in a bustling, authentic Manila shopping experience.",
     tip:"Visit the jewelry section for beautiful pearl sets at a fraction of mall prices. Haggling expected.",
     bg:"#4A2A00" },
 ];
 
-// ─── STATE ────────────────────────────────────────────────────────────────────
+// ── STATE ──
 let activeTab = 'all';
 let activeActivity = '';
 
-// ─── INIT ─────────────────────────────────────────────────────────────────────
-document.querySelectorAll('#activity-chips .chip').forEach(c => {
-  c.addEventListener('click', () => {
-    document.querySelectorAll('#activity-chips .chip').forEach(x => x.classList.remove('active'));
+// ── CHIP LISTENERS ──
+document.querySelectorAll('#activity-chips .chip').forEach(function(c) {
+  c.addEventListener('click', function() {
+    document.querySelectorAll('#activity-chips .chip').forEach(function(x) { x.classList.remove('active'); });
     c.classList.add('active');
     activeActivity = c.dataset.val;
-    toggleRestaurantExtras();
+    toggleDiningExtras();
   });
 });
 
 function setTab(el, tab) {
-  document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.filter-tab').forEach(function(t) { t.classList.remove('active'); });
   el.classList.add('active');
   activeTab = tab;
-  toggleRestaurantExtras();
+  toggleDiningExtras();
 }
 
-function toggleRestaurantExtras() {
-  const show = activeTab === 'restaurant' || activeActivity === 'restaurant' || activeActivity === 'cafe';
-  document.getElementById('restaurant-extras').classList.toggle('visible', show);
+function toggleDiningExtras() {
+  var show = activeTab === 'restaurant' || activeActivity === 'restaurant' || activeActivity === 'cafe';
+  var el = document.getElementById('restaurant-extras');
+  el.className = show ? 'restaurant-extras visible' : 'restaurant-extras';
 }
 
-
-function updateBudget(el) {
-  const val = parseInt(el.value);
-  const pct = (val / 5000) * 100;
-  el.style.setProperty('--pct', pct + '%');
-  document.getElementById('budget-val').textContent = val === 0 ? 'Free only' : '₱' + val.toLocaleString();
+// ── SLIDER ── Use JS to update the fill bar (Safari-safe)
+function updateBudget(input) {
+  var val = parseInt(input.value);
+  var pct = (val / 5000) * 100;
+  document.getElementById('slider-fill').style.width = pct + '%';
+  document.getElementById('budget-val').textContent = val === 0 ? 'Free only' : '\u20B1' + val.toLocaleString();
 }
 
-// Init slider fill on load
-(function(){
-  const el = document.getElementById('f-budget');
-  if (el) {
-    const val = parseInt(el.value);
-    const pct = (val / 5000) * 100;
-    el.style.setProperty('--pct', pct + '%');
-  }
+// Init slider fill
+(function() {
+  var input = document.getElementById('f-budget');
+  var val = parseInt(input.value);
+  var pct = (val / 5000) * 100;
+  document.getElementById('slider-fill').style.width = pct + '%';
 })();
 
-// ─── SEARCH ───────────────────────────────────────────────────────────────────
+// ── SEARCH ──
 function runSearch() {
-  const budgetRaw = parseInt(document.getElementById('f-budget').value);
-  const budget = isNaN(budgetRaw) ? Infinity : budgetRaw;  const location = document.getElementById('f-location').value;
-  const time = document.getElementById('f-time').value;
-  const vibe = document.getElementById('f-vibe').value;
-  const cuisine = document.getElementById('f-cuisine').value;
-  const meal = document.getElementById('f-meal').value;
-  const setting = document.getElementById('f-setting').value;
-  const diet = document.getElementById('f-diet').value;
+  var budget = parseInt(document.getElementById('f-budget').value);
+  if (isNaN(budget)) budget = 5000;
+  var location = document.getElementById('f-location').value;
+  var time = document.getElementById('f-time').value;
+  var vibe = document.getElementById('f-vibe').value;
+  var cuisine = document.getElementById('f-cuisine').value;
+  var meal = document.getElementById('f-meal').value;
+  var setting = document.getElementById('f-setting').value;
 
-  // Show loading
   document.getElementById('loading').style.display = 'flex';
   document.getElementById('cards-grid').innerHTML = '';
   document.getElementById('empty-state').style.display = 'none';
   document.getElementById('results-header').style.display = 'none';
 
-  setTimeout(() => {
-    let results = SPOTS.filter(s => {
+  setTimeout(function() {
+    var results = SPOTS.filter(function(s) {
       if (activeTab !== 'all' && s.type !== activeTab) return false;
       if (activeActivity && s.activityType !== activeActivity) return false;
       if (location && s.location !== location) return false;
@@ -1484,6 +1489,7 @@ function runSearch() {
       if (vibe && s.vibe !== vibe) return false;
       if (cuisine && s.cuisine && s.cuisine !== cuisine) return false;
       if (meal && s.meal && s.meal !== meal) return false;
+      if (setting && s.setting && s.setting !== setting) return false;
       return true;
     });
 
@@ -1496,38 +1502,40 @@ function runSearch() {
       return;
     }
 
-    const grid = document.getElementById('cards-grid');
+    var grid = document.getElementById('cards-grid');
     grid.innerHTML = '';
-    results.forEach((s, i) => {
-      const card = document.createElement('div');
+    results.forEach(function(s, i) {
+      var card = document.createElement('div');
       card.className = 'card';
-      card.style.animationDelay = (i * 0.06) + 's';
-      card.innerHTML = `
-        <div class="card-img" style="background:${s.bg}20; border-bottom:1px solid ${s.bg}30">
-          <span>${s.emoji}</span>
-          <div class="card-badge">${budgetLabel(s.budget)}</div>
-        </div>
-        <div class="card-body">
-          <div class="card-name">${s.name}</div>
-          <div class="card-location">📍 ${s.area}</div>
-          <div class="card-tags">
-            ${s.tags.map((t,idx) => `<span class="tag${idx===0?' highlight':''}">${t}</span>`).join('')}
-          </div>
-          <div class="card-meta">
-            <div class="meta-item">⏱ <strong>${timeLabel(s.time)}</strong></div>
-            <div class="meta-item">💸 <strong>~₱${s.budget.toLocaleString()}</strong></div>
-          </div>
-        </div>`;
-      card.onclick = () => openModal(s);
+      card.style.animationDelay = (i * 0.05) + 's';
+      card.innerHTML =
+        '<div class="card-img" style="background-color:' + s.bg + '22;">' +
+          '<span>' + s.emoji + '</span>' +
+          '<div class="card-badge">' + budgetLabel(s.budget) + '</div>' +
+        '</div>' +
+        '<div class="card-body">' +
+          '<div class="card-name">' + s.name + '</div>' +
+          '<div class="card-location">📍 ' + s.area + '</div>' +
+          '<div class="card-tags">' +
+            s.tags.map(function(t, idx) {
+              return '<span class="tag' + (idx === 0 ? ' highlight' : '') + '">' + t + '</span>';
+            }).join('') +
+          '</div>' +
+          '<div class="card-meta">' +
+            '<span>⏱ ' + timeLabel(s.time) + '</span>' +
+            '<span>💸 ~₱' + s.budget.toLocaleString() + '</span>' +
+          '</div>' +
+        '</div>';
+      card.onclick = function() { openModal(s); };
       grid.appendChild(card);
     });
 
-    grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }, 700);
+    document.getElementById('results-wrapper') && document.getElementById('results-wrapper').scrollIntoView({ behavior: 'smooth' });
+  }, 600);
 }
 
 function budgetLabel(b) {
-  if (b === 0) return '🆓 Free';
+  if (b === 0) return 'Free';
   if (b <= 300) return '₱ Budget';
   if (b <= 800) return '₱₱ Moderate';
   if (b <= 2000) return '₱₱₱ Mid-range';
@@ -1535,42 +1543,39 @@ function budgetLabel(b) {
 }
 
 function timeLabel(t) {
-  const map = { quick:'~1–2 hrs', half:'~3–4 hrs', full:'Full Day', evening:'Evening', overnight:'Overnight' };
+  var map = { quick:'~1–2 hrs', half:'~3–4 hrs', full:'Full Day', evening:'Evening', overnight:'Overnight' };
   return map[t] || t;
 }
 
-// ─── MODAL ────────────────────────────────────────────────────────────────────
+// ── MODAL ──
 function openModal(s) {
-  document.getElementById('modal-header').style.background = s.bg + '40';
-  document.getElementById('modal-header').querySelector('span') || 
-    document.getElementById('modal-header').insertAdjacentHTML('afterbegin', `<span style="font-size:5rem">${s.emoji}</span>`);
-  document.getElementById('modal-header').innerHTML = `
-    <button class="modal-close" onclick="closeModalBtn()">✕</button>
-    <span style="font-size:5rem">${s.emoji}</span>`;
+  document.getElementById('modal-header').style.backgroundColor = s.bg + '44';
+  document.getElementById('modal-header').innerHTML =
+    '<button class="modal-close" onclick="closeModal()">✕</button>' +
+    '<span style="font-size:4.5rem">' + s.emoji + '</span>';
   document.getElementById('modal-title').textContent = s.name;
-  document.getElementById('modal-location').innerHTML = `📍 ${s.area}`;
+  document.getElementById('modal-location').textContent = '📍 ' + s.area;
   document.getElementById('modal-desc').textContent = s.desc;
-  document.getElementById('modal-details').innerHTML = `
-    <div class="detail-box"><div class="detail-label">Budget / Person</div><div class="detail-val">${s.budget === 0 ? 'Free!' : '~₱' + s.budget.toLocaleString()}</div></div>
-    <div class="detail-box"><div class="detail-label">Time Needed</div><div class="detail-val">${timeLabel(s.time)}</div></div>
-    <div class="detail-box"><div class="detail-label">Best Vibe</div><div class="detail-val">${s.vibe.charAt(0).toUpperCase() + s.vibe.slice(1)}</div></div>
-    <div class="detail-box"><div class="detail-label">Category</div><div class="detail-val">${s.tags[0]}</div></div>`;
-  document.getElementById('modal-tips').innerHTML = `<strong>💡 Date Tip:</strong> ${s.tip}`;
-  document.getElementById('modal-overlay').classList.add('open');
+  document.getElementById('modal-details').innerHTML =
+    '<div class="detail-box"><div class="detail-label">Budget / Person</div><div class="detail-val">' + (s.budget === 0 ? 'Free!' : '~₱' + s.budget.toLocaleString()) + '</div></div>' +
+    '<div class="detail-box"><div class="detail-label">Time Needed</div><div class="detail-val">' + timeLabel(s.time) + '</div></div>' +
+    '<div class="detail-box"><div class="detail-label">Best Vibe</div><div class="detail-val">' + s.vibe.charAt(0).toUpperCase() + s.vibe.slice(1) + '</div></div>' +
+    '<div class="detail-box"><div class="detail-label">Category</div><div class="detail-val">' + s.tags[0] + '</div></div>';
+  document.getElementById('modal-tips').innerHTML = '<b>💡 Date Tip:</b> ' + s.tip;
+  document.getElementById('modal-overlay').className = 'modal-overlay open';
   document.body.style.overflow = 'hidden';
 }
 
-function closeModal(e) {
-  if (e.target === document.getElementById('modal-overlay')) closeModalBtn();
-}
-
-function closeModalBtn() {
-  document.getElementById('modal-overlay').classList.remove('open');
+function closeModal() {
+  document.getElementById('modal-overlay').className = 'modal-overlay';
   document.body.style.overflow = '';
 }
 
-// Run search on load with defaults
-window.addEventListener('load', () => setTimeout(runSearch, 300));
+function closeModalBg(e) {
+  if (e.target === document.getElementById('modal-overlay')) closeModal();
+}
+
+window.addEventListener('load', function() { setTimeout(runSearch, 300); });
 </script>
 
 </body>
