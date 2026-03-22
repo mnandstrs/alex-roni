@@ -5,7 +5,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Alex & Roni's Date Planner — NCR</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap');
+</style>
 <style>
   :root {
     --cream: #FDF6ED;
@@ -23,7 +28,7 @@
 - { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-font-family: ‘DM Sans’, sans-serif;
+font-family: ‘DM Sans’, -apple-system, BlinkMacSystemFont, ‘Segoe UI’, sans-serif;
 background: var(–cream);
 color: var(–deep);
 min-height: 100vh;
@@ -31,7 +36,8 @@ min-height: 100vh;
 
 /* HEADER */
 header {
-background: var(–deep);
+background-color: #2C1A12 !important;
+background: #2C1A12;
 padding: 28px 48px;
 display: flex;
 align-items: center;
@@ -42,7 +48,7 @@ z-index: 100;
 }
 
 .logo {
-font-family: ‘Playfair Display’, serif;
+font-family: ‘Playfair Display’, Georgia, ‘Times New Roman’, serif;
 font-size: 1.6rem;
 color: var(–blush);
 letter-spacing: 0.5px;
@@ -59,7 +65,8 @@ text-transform: uppercase;
 
 /* HERO */
 .hero {
-background: var(–deep);
+background-color: #2C1A12 !important;
+background: #2C1A12;
 padding: 64px 48px 80px;
 text-align: center;
 position: relative;
@@ -78,7 +85,7 @@ pointer-events: none;
 }
 
 .hero h1 {
-font-family: ‘Playfair Display’, serif;
+font-family: ‘Playfair Display’, Georgia, ‘Times New Roman’, serif;
 font-size: clamp(2.4rem, 5vw, 3.8rem);
 color: var(–cream);
 line-height: 1.2;
@@ -183,6 +190,43 @@ transition: border-color 0.2s;
 
 select:focus { outline: none; border-color: var(–rose); }
 
+.range-wrap { position: relative; padding-top: 24px; }
+.range-val {
+position: absolute;
+right: 0; top: 0;
+font-size: 0.78rem;
+font-weight: 500;
+color: var(–rose);
+}
+
+input[type=“range”] {
+-webkit-appearance: none;
+width: 100%;
+height: 4px;
+border-radius: 4px;
+background: linear-gradient(to right, #C97B5A 0%, #C97B5A var(–pct, 100%), #E8C4B0 var(–pct, 100%), #E8C4B0 100%);
+cursor: pointer;
+}
+
+input[type=“range”]::-webkit-slider-thumb {
+-webkit-appearance: none;
+width: 20px; height: 20px;
+border-radius: 50%;
+background: #C97B5A;
+border: 3px solid white;
+box-shadow: 0 2px 6px rgba(201,123,90,0.4);
+cursor: pointer;
+}
+
+input[type=“range”]::-moz-range-thumb {
+width: 20px; height: 20px;
+border-radius: 50%;
+background: #C97B5A;
+border: 3px solid white;
+box-shadow: 0 2px 6px rgba(201,123,90,0.4);
+cursor: pointer;
+}
+
 /* Chip toggles */
 .chip-row {
 display: flex;
@@ -259,7 +303,7 @@ margin-bottom: 28px;
 }
 
 .results-header h2 {
-font-family: ‘Playfair Display’, serif;
+font-family: ‘Playfair Display’, Georgia, ‘Times New Roman’, serif;
 font-size: 1.6rem;
 color: var(–deep);
 }
@@ -320,7 +364,7 @@ box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 .card-body { padding: 20px 22px 24px; }
 
 .card-name {
-font-family: ‘Playfair Display’, serif;
+font-family: ‘Playfair Display’, Georgia, ‘Times New Roman’, serif;
 font-size: 1.2rem;
 margin-bottom: 4px;
 color: var(–deep);
@@ -380,7 +424,7 @@ display: none;
 .empty-state .icon { font-size: 3.5rem; margin-bottom: 16px; }
 
 .empty-state h3 {
-font-family: ‘Playfair Display’, serif;
+font-family: ‘Playfair Display’, Georgia, ‘Times New Roman’, serif;
 font-size: 1.4rem;
 color: var(–mid);
 margin-bottom: 8px;
@@ -472,7 +516,7 @@ transition: background 0.15s;
 .modal-body { padding: 28px 32px 36px; }
 
 .modal-title {
-font-family: ‘Playfair Display’, serif;
+font-family: ‘Playfair Display’, Georgia, ‘Times New Roman’, serif;
 font-size: 1.8rem;
 color: var(–deep);
 margin-bottom: 6px;
@@ -603,12 +647,11 @@ header { padding: 18px 20px; }
     </div>
 
     <div class="filter-group">
-      <label>💸 Max Budget per Person</label>
-      <div style="position:relative">
-        <span style="position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:0.9rem;color:var(--mid);font-weight:500;pointer-events:none">₱</span>
-        <input type="number" id="f-budget" min="0" step="50" value="5000" placeholder="e.g. 1500"
-          style="appearance:none;-moz-appearance:textfield;width:100%;background:var(--soft);border:1.5px solid var(--blush);border-radius:10px;padding:11px 14px 11px 28px;font-family:'DM Sans',sans-serif;font-size:0.9rem;color:var(--deep);transition:border-color 0.2s;outline:none;"
-          onfocus="this.style.borderColor='var(--rose)'" onblur="this.style.borderColor='var(--blush)'">
+      <label>💸 Budget per Person</label>
+      <div class="range-wrap">
+        <span class="range-val" id="budget-val">₱5,000</span>
+        <input type="range" id="f-budget" min="0" max="5000" step="100" value="5000"
+          oninput="updateBudget(this)">
       </div>
     </div>
 
@@ -1374,11 +1417,27 @@ function toggleRestaurantExtras() {
 }
 
 
+function updateBudget(el) {
+  const val = parseInt(el.value);
+  const pct = (val / 5000) * 100;
+  el.style.setProperty('--pct', pct + '%');
+  document.getElementById('budget-val').textContent = val === 0 ? 'Free only' : '₱' + val.toLocaleString();
+}
+
+// Init slider fill on load
+(function(){
+  const el = document.getElementById('f-budget');
+  if (el) {
+    const val = parseInt(el.value);
+    const pct = (val / 5000) * 100;
+    el.style.setProperty('--pct', pct + '%');
+  }
+})();
+
 // ─── SEARCH ───────────────────────────────────────────────────────────────────
 function runSearch() {
   const budgetRaw = parseInt(document.getElementById('f-budget').value);
-  const budget = isNaN(budgetRaw) ? Infinity : budgetRaw;
-  const location = document.getElementById('f-location').value;
+  const budget = isNaN(budgetRaw) ? Infinity : budgetRaw;  const location = document.getElementById('f-location').value;
   const time = document.getElementById('f-time').value;
   const vibe = document.getElementById('f-vibe').value;
   const cuisine = document.getElementById('f-cuisine').value;
